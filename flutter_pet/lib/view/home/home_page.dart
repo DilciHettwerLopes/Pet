@@ -1,6 +1,6 @@
-import 'package:PetShop/view/foto/foto.dart';
-import 'package:PetShop/view/home/home_controller.dart';
-import 'package:PetShop/view/home/home_page.dart';
+//import 'package:PetShop/view/foto/foto.dart';
+import 'package:PetShop/controller/home_controller.dart';
+//import 'package:PetShop/view/home/home_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
@@ -43,7 +43,7 @@ class HomePage extends GetView<HomeController> {
               Conta(),
             ],
           )*/
-            child: Text("Pet Shop"),
+            child: Text("Lista de animais"),
           ),
         ),
       ),

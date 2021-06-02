@@ -1,4 +1,5 @@
-//import 'package:PetShop/view/home/home_page.dart';
+import 'package:PetShop/view/cadastro/cadastro.dart';
+import 'package:PetShop/view/home/home_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'constants.dart';
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
       textTheme: Theme.of(context).textTheme.apply(bodyColor:pTextColor),
       visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-     // home: HomePage(),
+      home: Cadastro(),
 
     );
   }
