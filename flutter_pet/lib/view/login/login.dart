@@ -1,3 +1,7 @@
+import 'package:PetShop/model/Autenticacao_model.dart';
+import 'package:PetShop/model/RetornoAutenticacao.dart';
+import 'package:PetShop/service/request.dart';
+import 'package:PetShop/view/home/home_page.dart';
 import 'package:flutter/material.dart';
 
 class Login extends StatefulWidget {
@@ -12,17 +16,17 @@ class _LoginState extends State<Login> {
   final loginController = TextEditingController();
   final senhaController = TextEditingController();
 
- // login({BuildContext context}) async {
-    //RetornoAutenticacao retorno = await Request.request.validarLogin(
-    //   Autenticacao(senha:senhaController.text,login:loginController.text  ));
+  login({BuildContext context}) async {
+    RetornoAutenticacao retorno = await Request.request.validarLogin(
+    Autenticacao(senha:senhaController.text,login:loginController.text  ));
 
-    // if (retorno != null) {
-    //   Navigator.push(
-    //       context,
-    //       MaterialPageRoute(
-    //           builder: (context) => HomePage(retornoAtenticacao: retorno)));
-    // }
- // }
+     if (retorno != null) {
+       Navigator.push(
+           context,
+           MaterialPageRoute(
+               builder: (context) => HomePage(retornoAutenticacao: retorno)));
+     }
+ }
 
   @override
   Widget build(BuildContext context) {

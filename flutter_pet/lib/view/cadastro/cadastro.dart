@@ -17,6 +17,7 @@ class _CadastroState extends State<Cadastro> {
       appBar: AppBar(
         title: Text('Cadastro'),
         backgroundColor: Colors.red,
+        
       ),
       body: Form(
         key: _usuarioController.form,
@@ -64,13 +65,13 @@ class _CadastroState extends State<Cadastro> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(
-          Icons.save_alt,
+          child: Icon(
+            Icons.save_alt,
+          ),
+          onPressed: () {
+            _usuarioController.salvarUsuario();
+          },
         ),
-        onPressed: () {
-          _usuarioController.salvarUsuario();
-        },
-      ),
-    );
+      );
   }
 }
