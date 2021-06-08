@@ -1,7 +1,7 @@
 import 'package:PetShop/model/Autenticacao_model.dart';
 import 'package:PetShop/model/RetornoAutenticacao.dart';
 import 'package:PetShop/service/request.dart';
-import 'package:PetShop/view/home/home_page.dart';
+import 'package:PetShop/view/home/home.dart';
 import 'package:flutter/material.dart';
 
 class Login extends StatefulWidget {
@@ -24,7 +24,7 @@ class _LoginState extends State<Login> {
        Navigator.push(
            context,
            MaterialPageRoute(
-               builder: (context) => HomePage(retornoAutenticacao: retorno)));
+               builder: (context) => Home(retornoAutenticacao: retorno)));
      }
  }
 
