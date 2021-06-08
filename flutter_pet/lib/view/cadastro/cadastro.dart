@@ -1,3 +1,4 @@
+import 'package:PetShop/controller/cliente_controller.dart';
 import 'package:PetShop/controller/usuario_controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +10,7 @@ class Cadastro extends StatefulWidget {
 }
 
 class _CadastroState extends State<Cadastro> {
-  final UsuarioController _usuarioController = Get.put(UsuarioController());
+  final ClienteController _clienteController = Get.put(ClienteController());
 
   @override
   Widget build(BuildContext context) {
@@ -20,13 +21,13 @@ class _CadastroState extends State<Cadastro> {
         
       ),
       body: Form(
-        key: _usuarioController.form,
+        key: _clienteController.form,
         child: Padding(
           padding: const EdgeInsets.all(40),
           child: Column(
             children: [
               TextFormField(
-                controller: _usuarioController.nomeCadastroController,
+                controller: _clienteController.nomeCadastroController,
                 decoration: InputDecoration(hintText: "Digite o nome"),
                 autovalidateMode: AutovalidateMode.onUserInteraction,
                 autofocus: true,
@@ -38,7 +39,7 @@ class _CadastroState extends State<Cadastro> {
                 },
               ),
               TextFormField(
-                controller: _usuarioController.emailCadastroController,
+                controller: _clienteController.loginCadastroController,
                 decoration: InputDecoration(hintText: "Digite o email"),
                 cursorRadius: Radius.zero,
                 autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -49,7 +50,7 @@ class _CadastroState extends State<Cadastro> {
                 },
               ),
               TextFormField(
-                controller: _usuarioController.senhaCadastroController,
+                controller: _clienteController.senhaCadastroController,
                 decoration: InputDecoration(hintText: "Digite a senha"),
                 autovalidateMode: AutovalidateMode.onUserInteraction,
                 autofocus: true,
@@ -69,7 +70,7 @@ class _CadastroState extends State<Cadastro> {
             Icons.save_alt,
           ),
           onPressed: () {
-            _usuarioController.salvarUsuario();
+            _clienteController.salvarCliente();
           },
         ),
       );

@@ -1,5 +1,7 @@
+import 'package:PetShop/model/Listaanimais_model.dart';
 import 'package:PetShop/model/RetornoAutenticacao.dart';
 import 'package:PetShop/service/request.dart';
+import 'package:PetShop/view/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 
 class Lista_Animais extends StatelessWidget {
@@ -8,34 +10,25 @@ class Lista_Animais extends StatelessWidget {
 
    @override
   Widget build(BuildContext context) {
+    final Request listaanimais_model = Request();
+
     return Scaffold(
       appBar: AppBar(
-        centerTitle: true,
-        title: Text('Seja Bem-vindo'),
-        actions: [
-          Container(
-            height: 50,
-            width: 50,
-            decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(30),
-                image: DecorationImage(
-                    image: AssetImage('assets/logo.png'),
-                    fit: BoxFit.scaleDown),
-                boxShadow: [
-                  BoxShadow(
-                      color: Colors.black54,
-                      blurRadius: 40,
-                      offset: Offset(20, 20))
-                ]),
-          ),
+        title: Text('Lista de Animais'),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.add),
+            onPressed: () {
+            Navigator.of(context).pushNamed(
+              AppRoutes.FORMULARIO
+            );
+            },
+          )
         ],
       ),
-      body: FutureBuilder<List>(
-          future: Request.request.getList(widget.retornoAtenticacao.codigo)
-      );
+      body: ListView.builder(
+          itemCount: listaanimais_model.count,
+          itemBuilder: (ctx, i) => Lista_Animais(listaanimais.byIndex(i))),
     );
-
-  };
+  }
 }
-

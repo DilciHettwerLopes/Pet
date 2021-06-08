@@ -20,10 +20,11 @@ class MyApp extends StatelessWidget {
       textTheme: Theme.of(context).textTheme.apply(bodyColor:pTextColor),
       visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      routes: {
-          AppRoutes.CADASTRO: (_) => Cadastro(),
-          AppRoutes.LOGIN: (_) => Login(),
-      }
+      home: Login(),
+      // routes: {
+      //     AppRoutes.CADASTRO: (_) => Cadastro(),
+      //     AppRoutes.LOGIN: (_) => Login(),
+      // }
     );
   }
 }

@@ -1,12 +1,12 @@
 import 'package:PetShop/model/Autenticacao_model.dart';
 import 'package:PetShop/model/RetornoAutenticacao.dart';
 import 'package:PetShop/service/request.dart';
-import 'package:PetShop/view/home/home.dart';
+import 'package:PetShop/view/lista_animais/lista_animais.dart';
 import 'package:flutter/material.dart';
 
 class Login extends StatefulWidget {
-  Login({Key key, this.emailusuario}) : super(key: key);
-  final String emailusuario;
+  Login({Key key, this.logincliente}) : super(key: key);
+  final String logincliente;
 
   @override
   _LoginState createState() => _LoginState();
@@ -18,13 +18,14 @@ class _LoginState extends State<Login> {
 
   login({BuildContext context}) async {
     RetornoAutenticacao retorno = await Request.request.validarLogin(
-    Autenticacao(senha:senhaController.text,login:loginController.text  ));
+    Autenticacao(login:loginController.text,senha:senhaController.text));
 
      if (retorno != null) {
        Navigator.push(
            context,
            MaterialPageRoute(
-               builder: (context) => Home(retornoAutenticacao: retorno)));
+               builder: (context) => Lista_Animais(retornoAutenticacao: retorno)
+             ));
      }
  }
 
@@ -33,7 +34,7 @@ class _LoginState extends State<Login> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        title: Text(widget.emailusuario),
+        title: Text(widget.logincliente),
       ),
       body: Center(
         child: Padding(

@@ -22,6 +22,6 @@ class UsuarioController extends GetxController {
       senha: senhaCadastroController.text,
     );
 
-    await Request.request.salvarUsuario(usuarioModel);
+   // await Request.request.salvarUsuario(usuarioModel);
   }
 }
