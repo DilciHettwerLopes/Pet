@@ -1,13 +1,65 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get_state_manager/src/simple/get_view.dart';
-import 'package:petshop/controller/home_controller.dart';
 
-class Home extends GetView<HomeController> {
+void main() => runApp(const Home());
+
+/// This is the main application widget.
+class Home extends StatelessWidget {
+  const Home({Key key}) : super(key: key);
+
+  static const String _title = 'Flutter Code Sample';
+
+  @override
+  Widget build(BuildContext context) {
+    return const MaterialApp(
+      title: _title,
+      debugShowCheckedModeBanner: false,
+      home: MyStatefulWidget(),
+    );
+  }
+}
+
+/// This is the stateful widget that the main application instantiates.
+class MyStatefulWidget extends StatefulWidget {
+  const MyStatefulWidget({Key key}) : super(key: key);
+
+  @override
+  State<MyStatefulWidget> createState() => _MyStatefulWidgetState();
+}
+
+/// This is the private State class that goes with MyStatefulWidget.
+class _MyStatefulWidgetState extends State<MyStatefulWidget> {
+  int _selectedIndex = 0;
+  static const TextStyle optionStyle =
+      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+  static const List<Widget> _widgetOptions = <Widget>[
+    Text(
+      'Index 0: Home',
+      style: optionStyle,
+    ),
+    Text(
+      'Index 1: Status',
+      style: optionStyle,
+    ),
+    Text(
+      'Index 2: Fotos',
+      style: optionStyle,
+    ),
+    Text(
+      'Index 3: Configurações',
+      style: optionStyle,
+    ),
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+       appBar: AppBar(
         backgroundColor: Colors.redAccent,
         centerTitle: true,
         title: Text('Seja Bem-vindo'),
@@ -30,56 +82,36 @@ class Home extends GetView<HomeController> {
           ),
         ],
       ),
-      body: Container(
-        child: SafeArea(
-          child: Center(
-            /*IndexedStack(
-            index: controller.tabIndex,
-            children: [
-              Home(),
-              Foto(),
-              Status(),
-              Conta(),
-            ],
-          )*/
-            child: Text("Lista de animais"),
-          ),
-        ),
+      body: Center(
+        child: _widgetOptions.elementAt(_selectedIndex),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        unselectedItemColor: Colors.redAccent,
-        selectedItemColor: Colors.blueAccent,
-        //  onTap: controller.changeTabIndex,
-        //  currentIndex: controller.tabIndex,
-        showSelectedLabels: false,
-        showUnselectedLabels: false,
-        type: BottomNavigationBarType.fixed,
-        items: [
-          _bottomNavigationBarItem(
-            Icon: Icon(Icons.home),
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.pets),
             label: 'Home',
+            backgroundColor: Colors.red,
           ),
-          _bottomNavigationBarItem(
-            Icon: Icon(Icons.pets),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.time_to_leave),
             label: 'Status',
+            backgroundColor: Colors.green,
           ),
-          _bottomNavigationBarItem(
-            Icon: Icon(Icons.camera_alt),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.camera_alt),
             label: 'Fotos',
+            backgroundColor: Colors.purple,
           ),
-          _bottomNavigationBarItem(
-            Icon: Icon(Icons.person),
-            label: 'Conta',
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings),
+            label: 'Configurações',
+            backgroundColor: Colors.pink,
           ),
         ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.amber[800],
+        onTap: _onItemTapped,
       ),
-    );
-  }
-
-  _bottomNavigationBarItem({IconData icon, String label, Icon Icon}) {
-    return BottomNavigationBarItem(
-      icon: Icon,
-      label: label,
     );
   }
 }
