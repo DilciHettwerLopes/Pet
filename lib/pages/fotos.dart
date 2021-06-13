@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class HomePage extends StatelessWidget {
+class Fotos extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

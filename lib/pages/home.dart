@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:petshop/pages/fotos.dart';
 
 void main() => runApp(const Home());
 
@@ -31,7 +33,14 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   int _selectedIndex = 0;
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-  static const List<Widget> _widgetOptions = <Widget>[
+  List<Widget> _widgetOptions = <Widget>[
+// SingleChildScrollView(
+//   child: Container(
+//     child: Column(children: [
+//     Fotos()
+//     ],),
+//   ), 
+// )
     Text(
       'Index 0: Home',
       style: optionStyle,
@@ -40,12 +49,13 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
       'Index 1: Status',
       style: optionStyle,
     ),
+   Container(
+     child: Column(children: [
+       
+     ],),
+   ),
     Text(
-      'Index 2: Fotos',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 3: Configurações',
+      'Index 3: Conta',
       style: optionStyle,
     ),
   ];
@@ -69,7 +79,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             width: 50,
             decoration: BoxDecoration(
                 color: Colors.white,
-                borderRadius: BorderRadius.circular(30),
+                borderRadius: BorderRadius.circular(50),
                 image: DecorationImage(
                     image: AssetImage('assets/logo.png'),
                     fit: BoxFit.scaleDown),
@@ -91,16 +101,17 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             icon: Icon(Icons.pets),
             label: 'Home',
             backgroundColor: Colors.red,
+            
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.time_to_leave),
             label: 'Status',
-            backgroundColor: Colors.green,
+            backgroundColor: Colors.pink,
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.camera_alt),
             label: 'Fotos',
-            backgroundColor: Colors.purple,
+            backgroundColor: Colors.red,
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
