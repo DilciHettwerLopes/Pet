@@ -34,13 +34,6 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   List<Widget> _widgetOptions = <Widget>[
-// SingleChildScrollView(
-//   child: Container(
-//     child: Column(children: [
-//     Fotos()
-//     ],),
-//   ), 
-// )
     Text(
       'Index 0: Home',
       style: optionStyle,
@@ -49,10 +42,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
       'Index 1: Status',
       style: optionStyle,
     ),
-   Container(
-     child: Column(children: [
-       
-     ],),
+   Fotos( 
    ),
     Text(
       'Index 3: Conta',
