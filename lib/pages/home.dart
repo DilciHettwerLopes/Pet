@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:petshop/pages/fotos.dart';
+import 'package:petshop/pages/lista_animais.dart';
 
 void main() => runApp(const Home());
 
@@ -8,7 +9,7 @@ void main() => runApp(const Home());
 class Home extends StatelessWidget {
   const Home({Key key}) : super(key: key);
 
-  static const String _title = 'Flutter Code Sample';
+  static const String _title = 'Flutter Pet';
 
   @override
   Widget build(BuildContext context) {
@@ -34,16 +35,16 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   List<Widget> _widgetOptions = <Widget>[
-    Text(
-      'Index 0: Home',
-      style: optionStyle,
-    ),
+    // Text(
+    //   'Index 0: Home',
+    //   style: optionStyle,
+    // ),
+    Lista_Animais(),
     Text(
       'Index 1: Status',
       style: optionStyle,
     ),
-   Fotos( 
-   ),
+    Fotos(),
     Text(
       'Index 3: Conta',
       style: optionStyle,
@@ -59,7 +60,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-       appBar: AppBar(
+      appBar: AppBar(
         backgroundColor: Colors.redAccent,
         centerTitle: true,
         title: Text('Seja Bem-vindo'),
@@ -91,7 +92,6 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             icon: Icon(Icons.pets),
             label: 'Home',
             backgroundColor: Colors.red,
-            
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.time_to_leave),

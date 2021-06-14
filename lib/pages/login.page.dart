@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:petshop/pages/home.dart';
-import 'package:petshop/pages/fotos.dart';
 import 'package:petshop/pages/reset-password.page.dart';
 import 'package:petshop/pages/signup.page.dart';
 
