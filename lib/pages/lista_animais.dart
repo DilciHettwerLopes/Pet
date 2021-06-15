@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:petshop/pages/home.dart';
 
 class Lista_Animais extends StatefulWidget {
   @override
@@ -6,27 +7,25 @@ class Lista_Animais extends StatefulWidget {
 }
 
 class _Lista_AnimaisState extends State<Lista_Animais> {
-  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView(
-          children: <Widget>[
-            ListTile(
-             leading: Icon(Icons.pets),
-              title: Text('Animal 1'),
-            ),
-            ListTile(
-              leading: Icon(Icons.pets_sharp),
-              title: Text('Animal 2'),
-            ),
-            ListTile(
-              leading: Icon(Icons.pets_outlined),
-              title: Text('Animal 3'),
-            ),
-          ],
+      body: ListTile(
+        leading: GestureDetector(
+          onTap: () {},
+          child: Container(
+            width: 48,
+            height: 48,
+            padding: const EdgeInsets.symmetric(vertical: 4.0),
+            alignment: Alignment.center,
+            child: const CircleAvatar(),
+          ),
         ),
-
+        title: const Text('Animal'),
+        trailing: Icon(Icons.delete),
+        focusColor: Colors.redAccent,
+      ),
     );
+    
   }
 }
