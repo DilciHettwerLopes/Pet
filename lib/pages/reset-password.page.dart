@@ -90,7 +90,7 @@ class ResetPasswordPage extends StatelessWidget {
                           ),
                         ),
                         child: SizedBox.expand(
-                          child: FlatButton(
+                          child: TextButton(
                             child: Text(
                               "Enviar",
                               style: TextStyle(

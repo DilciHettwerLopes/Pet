@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:petshop/pages/fotos.dart';
 import 'package:petshop/pages/lista_animais.dart';
+import 'package:petshop/pages/status.dart';
 
 void main() => runApp(const Home());
 
@@ -21,7 +22,6 @@ class Home extends StatelessWidget {
   }
 }
 
-/// This is the stateful widget that the main application instantiates.
 class MyStatefulWidget extends StatefulWidget {
   const MyStatefulWidget({Key key}) : super(key: key);
 
@@ -29,21 +29,17 @@ class MyStatefulWidget extends StatefulWidget {
   State<MyStatefulWidget> createState() => _MyStatefulWidgetState();
 }
 
-/// This is the private State class that goes with MyStatefulWidget.
 class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   int _selectedIndex = 0;
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   List<Widget> _widgetOptions = <Widget>[
+    Lista_Animais(),
     // Text(
-    //   'Index 0: Home',
+    //   'Index 1: Status',
     //   style: optionStyle,
     // ),
-    Lista_Animais(),
-    Text(
-      'Index 1: Status',
-      style: optionStyle,
-    ),
+    Status(),
     Fotos(),
     Text(
       'Index 3: Conta',

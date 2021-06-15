@@ -10,7 +10,7 @@ class _Lista_AnimaisState extends State<Lista_Animais> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListTile(
+      body: ListTile( //listview builder com a api
         leading: GestureDetector(
           onTap: () {},
           child: Container(
@@ -22,7 +22,41 @@ class _Lista_AnimaisState extends State<Lista_Animais> {
           ),
         ),
         title: const Text('Animal'),
-        trailing: Icon(Icons.delete),
+        trailing: Container(
+ width: 100,
+        child: Row(children: <Widget>[
+          IconButton(
+            icon: Icon(Icons.edit),
+            color: Colors.green,
+           onPressed: () { },
+          ),
+          IconButton(
+            icon: Icon(Icons.delete),
+            color: Colors.red,
+            onPressed: () {
+              showDialog(
+                context: context,
+                builder: (ctx) => AlertDialog(
+                  title: Text('Excluir Usuário'),
+                  content: Text('Tem certeza?'),
+                  actions: <Widget>[
+                    TextButton(
+                      onPressed: () {
+                        Navigator.of(context).pop();  
+                      },
+                      child: Text('Não'),
+                    ),
+                    TextButton(
+                      onPressed: () {},
+                      child: Text('Sim'),
+                    ),
+                  ],
+                ),
+              );
+            },
+          ),
+        ]),
+      ),// column coom iconbuttom
         focusColor: Colors.redAccent,
       ),
     );
