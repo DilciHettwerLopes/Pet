@@ -34,13 +34,13 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   List<Widget> _widgetOptions = <Widget>[
-    Lista_Animais(),
-    Status(),
-    Fotos(),
-    Text(
-      'Index 3: Conta',
-      style: optionStyle,
-    ),
+    // Lista_Animais(),
+    // Status(),
+    // Fotos(),
+    // Text(
+    //   'Index 3: Conta',
+    //   style: optionStyle,
+    // ),
   ];
 
   void _onItemTapped(int index) {
