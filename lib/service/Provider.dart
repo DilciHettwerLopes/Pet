@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:math';
 import 'package:petshop/model/Autenticacao_model.dart';
 import 'package:petshop/model/Cliente_model.dart';
 import 'package:petshop/model/RetornoAutenticacao.dart';
@@ -87,7 +86,6 @@ class Provider {
 //     }
 //   }
 
-  
   Map<String, String> getHeadres() {
     Map<String, String> map = Map();
     map.addAll({'accept': 'application/json'});
