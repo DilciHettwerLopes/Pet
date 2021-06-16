@@ -11,7 +11,7 @@ class _FotosState extends State<Fotos> {
     return Scaffold(
       body: Container(
         color: Color(0xFFF2F3F6),
-        child: ListView(
+        child: ListView( //.builder
           children: <Widget>[
             cardItem(),
             cardItem(),

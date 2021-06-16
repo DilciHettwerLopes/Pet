@@ -18,7 +18,7 @@ class _StatusState extends State<Status> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Timeline.tileBuilder(
+      body: Timeline.tileBuilder(  //listview builder 
         builder: TimelineTileBuilder.fromStyle(
           contentsAlign: ContentsAlign.alternating,
           contentsBuilder: (context, index) => Padding(

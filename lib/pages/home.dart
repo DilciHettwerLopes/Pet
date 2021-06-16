@@ -35,10 +35,6 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   List<Widget> _widgetOptions = <Widget>[
     Lista_Animais(),
-    // Text(
-    //   'Index 1: Status',
-    //   style: optionStyle,
-    // ),
     Status(),
     Fotos(),
     Text(
@@ -56,32 +52,77 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.redAccent,
-        centerTitle: true,
-        title: Text('Seja Bem-vindo'),
-        actions: [
-          Container(
-            height: 50,
-            width: 50,
-            decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(50),
-                image: DecorationImage(
-                    image: AssetImage('assets/logo.png'),
-                    fit: BoxFit.scaleDown),
-                boxShadow: [
-                  BoxShadow(
-                      color: Colors.black54,
-                      blurRadius: 40,
-                      offset: Offset(20, 20))
-                ]),
-          ),
-        ],
-      ),
-      body: Center(
+      // appBar: AppBar(
+      //   backgroundColor: Colors.redAccent,
+      //   centerTitle: true,
+      //   title: Text('Seja Bem-vindo'),
+      //   actions: [
+      //     Container(
+      //       height: 50,
+      //       width: 50,
+      //       decoration: BoxDecoration(
+      //           color: Colors.white,
+      //           borderRadius: BorderRadius.circular(50),
+      //           image: DecorationImage(
+      //               image: AssetImage('assets/logo.png'),
+      //               fit: BoxFit.scaleDown),
+      //           boxShadow: [
+      //             BoxShadow(
+      //                 color: Colors.black54,
+      //                 blurRadius: 40,
+      //                 offset: Offset(20, 20))
+      //           ]),
+      //     ),
+      //   ],
+      // ),
+      body: Stack(
+          children: <Widget>[
+            CustomScrollView(
+              slivers: <Widget>[
+                SliverAppBar(
+                  pinned: true,
+                  floating: false,
+                  expandedHeight: Get.height / 4,
+                  flexibleSpace: Container(
+                    decoration: new BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage("assets/dog.png"),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: <Widget>[
+                        //conteudo da barra
+                      ],
+                    ),
+                  ),
+                ),
+                // SliverList(
+                //   delegate: SliverChildListDelegate(
+                //     <Widget>[
+                //       Container( 
+                //         //child: FutureBuilder<List<Lista_Animais>>(
+                        //   future: Lista_Animais.api.get(),
+                        //   builder: (
+                        //     context,
+                        //     snapshot,
+                        //   ) =>
+                        //       //listView
+                        // ),
+                //       ),
+                //       SizedBox(height: 80)
+                //     ],
+                //   ),
+                // ),
+                Center(
         child: _widgetOptions.elementAt(_selectedIndex),
+                )
+              ],
+            ),
+          ],
       ),
+                        
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
@@ -109,6 +150,8 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
         selectedItemColor: Colors.amber[800],
         onTap: _onItemTapped,
       ),
+    
     );
+    
   }
 }
