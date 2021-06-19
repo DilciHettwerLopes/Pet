@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:petshop/model/Cliente_model.dart';
-import 'package:petshop/service/Provider.dart';
+import 'package:petshop/service/Request.dart';
 
 class ClienteController extends GetxController {
   //listOfContacts é uma lista observável, quando sofrer atualizações
@@ -26,11 +26,11 @@ class ClienteController extends GetxController {
       telefone: telefoneCadastroController.text,
       redesocial: redesocialCadastroController.text,
       observacao: observacaoCadastroController.text,
-      login: telefoneCadastroController.text,
+      login: loginCadastroController.text,
       senha: senhaCadastroController.text,
       endereco: enderecoCadastroController.text,
     );
 
-    await Provider.request.salvacliente(clienteModel);
+    await Request.request.salvacliente(clienteModel);
   }
 }

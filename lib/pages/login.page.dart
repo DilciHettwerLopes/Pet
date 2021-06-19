@@ -1,9 +1,42 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_connect/http/src/request/request.dart';
+import 'package:petshop/model/Autenticacao_model.dart';
+import 'package:petshop/model/RetornoAutenticacao.dart';
 import 'package:petshop/pages/home.dart';
 import 'package:petshop/pages/reset-password.page.dart';
 import 'package:petshop/pages/signup.page.dart';
 
+void main() {
+  runApp(LoginPage());
+}
 class LoginPage extends StatelessWidget {
+  LoginPage({Key key, this.title}) : super(key: key);
+
+  final String title;
+
+  @override
+  _LoginPageState createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  final loginController = TextEditingController();
+  final senhaController = TextEditingController();
+
+  login({BuildContext context}) async {
+
+    RetornoAutenticacao retorno = await Request.request.validarLogin(
+        Autenticacao(senha:senhaController.text,login:loginController.text  ));
+
+    if(retorno!=null){
+
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => Home(retornoAtenticacao: retorno)));
+    }
+
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,10 +54,10 @@ class LoginPage extends StatelessWidget {
               height: 20,
             ),
             TextFormField(
-              // autofocus: true,
+              controller: loginController,
               keyboardType: TextInputType.emailAddress,
               decoration: InputDecoration(
-                labelText: "E-mail",
+                labelText: "Login",
                 labelStyle: TextStyle(
                   color: Colors.black38,
                   fontWeight: FontWeight.w400,
@@ -38,6 +71,7 @@ class LoginPage extends StatelessWidget {
             ),
             TextFormField(
               // autofocus: true,
+              controller: senhaController,
               keyboardType: TextInputType.text,
               obscureText: true,
               decoration: InputDecoration(
@@ -89,7 +123,7 @@ class LoginPage extends StatelessWidget {
                 ),
               ),
               child: SizedBox.expand(
-                child: FlatButton(
+                child: TextButton(
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
@@ -112,12 +146,13 @@ class LoginPage extends StatelessWidget {
                     ],
                   ),
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => Home(),
-                      ),
-                    );
+                    // Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(
+                    //     builder: (context) => Home(),
+                    login(context: context);
+                    //   ),
+                    // );
                   },
                 ),
               ),
@@ -135,7 +170,7 @@ class LoginPage extends StatelessWidget {
                 ),
               ),
               child: SizedBox.expand(
-                child: FlatButton(
+                child: TextButton(
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
@@ -166,7 +201,7 @@ class LoginPage extends StatelessWidget {
             ),
             Container(
               height: 40,
-              child: FlatButton(
+              child: TextButton(
                 child: Text(
                   "Cadastre-se",
                   textAlign: TextAlign.center,

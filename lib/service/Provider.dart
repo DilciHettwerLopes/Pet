@@ -1,95 +1,116 @@
-import 'dart:convert';
-import 'package:petshop/model/Autenticacao_model.dart';
-import 'package:petshop/model/Cliente_model.dart';
-import 'package:petshop/model/RetornoAutenticacao.dart';
-import 'package:http/http.dart' as http;
+
 
 class Provider {
-  static final Provider request = Provider();
-  static final String cabecalho = '10.10.199.175';
-  // static final String cabecalho='192.168.0.104:8080';
+  static final Provider db = Provider();
+  Database _database;
 
-  Future<RetornoAutenticacao> validarLogin(Autenticacao autenticacao) async {
-    Uri url = Uri.http(cabecalho, '/autenticacaoService');
+  // Future<Database> get database async {
+  //   if (_database != null) return _database;
+  //   _database = await initDB();
+  //   return _database;
+  // }
 
-    final response = await http.post(url,
-        headers: getHeadres(), body: json.encode(autenticacao.toMap()));
+  // initDB() async {
+  //   return await openDatabase(join(await getDatabasesPath(), 'compraae.db'),
+  //       onCreate: (db, version) {
+  //     Migration.migration.getAllScript().forEach((x) {
+  //       db.execute(x);
+  //     });
+  //   }, onUpgrade: (db, oldVersion, newVersion) {
+  //     for (int i = oldVersion + 1; i <= newVersion; i++) {
+  //       Migration.migration.getScript(i).forEach((x) {
+  //         db.execute(x);
+  //       });
+  //     }
+  //   }, version: 9);
+  // }
 
-    if (response.statusCode == 200) {
-      return RetornoAutenticacao.fromMap(jsonDecode(response.body));
-    } else {
-      return null;
-    }
+  // Future<int> salvarCompra(Compras compras,
+  //     {String data, String nomeProduto, int idUsuario}) async {
+  //   Database db = await database;
+  //   return await db.insert("tb_compras", compras.toMap(),
+  //       conflictAlgorithm: ConflictAlgorithm.replace);
+  // }
+
+  // Future<void> salvar(Usuario usuario) async {
+  //   Database db = await database;
+  //   await db.insert("tb_usuario", usuario.toMap(),
+  //       conflictAlgorithm: ConflictAlgorithm.replace);
+  // }
+
+  // Future<void> delete(int id) async {
+  //   Database db = await database;
+  //   await db.delete("tb_usuario", where: "id =?", whereArgs: [id]);
+  // }
+
+  // Future<void> deleteCompras(int id) async {
+  //   Database db = await database;
+  //   await db.delete("tb_compras", where: "id =?", whereArgs: [id]);
+  // }
+
+  // Future<List<Compras>> getAllCompras() async {
+  //   Database db = await database;
+  //   List<Map<String, dynamic>> maps = await db.query('tb_compras');
+  //   List<Compras> compras = List.generate(maps.length, (i) {
+  //     return Compras(
+  //         id: maps[i]['id'],
+  //         nomeProduto: maps[i]['tx_nomeProduto'],
+  //         data: maps[i]['tx_data'],
+  //         idUsuario: maps[i]["id_usuario"]);
+  //   });
+  //   return compras;
+  // }
+
+  Future<List<Cliente>> getAll() async {
+    Database db = await database;
+    List<Map<String, dynamic>> maps = await db.query('cliente');
+    List<Cliente> users = List.generate(maps.length, (i) {
+      return Cliente(
+          id: maps[i]['id'],
+          nome: maps[i]['tx_nome'],
+          login: maps[i]['tx_login'],
+          senha: maps[i]["tx_senha"]);
+    });
+    return users;
   }
 
-//cadastro
-  Future<List<ClienteModel>> getCliente(int nomeCliente) async {
-    print(nomeCliente);
+  Future<Cliente> getById(int id) async {
+    Database db = await database;
 
-    Uri url = Uri.http(cabecalho, '/cadastroCliente/' + nomeCliente.toString());
+    List<Map<String, dynamic>> maps =
+        await db.query('tb_usuario', where: 'id = ?', whereArgs: [id]);
+    print('${maps.first}');
+    List<Cliente> users = List.generate(
+        maps.length,
+        (i) => Cliente(
+            id: maps[i]['id'],
+            nome: maps[i]['tx_nome'],
+            login: maps[i]['tx_login'],
+            senha: maps[i]["tx_senha"]));
 
-    final response = await http.get(url, headers: getHeadres());
-
-    if (response.statusCode == 200) {
-      Iterable l = json.decode(response.body);
-
-      return List<ClienteModel>.from(
-          l.map((model) => ClienteModel.fromJson(model)));
-    } else {
-      return [];
+    if (users.length > 0) {
+      return users[0];
     }
+    return null;
   }
 
-  Future<ClienteModel> salvacliente(ClienteModel clienteModel) async {
-    Uri url = Uri.http(cabecalho, 'salvar');
+  Future<Cliente> getByClienteSenha({String login, String senha}) async {
+    Database db = await database;
 
-    final response = await http.post(url,
-        headers: getHeadres(), body: json.encode(clienteModel.toJson()));
+    List<Map<String, dynamic>> maps = await db.query('tb_usuario',
+        where: 'tx_login = ? and tx_senha = ?', whereArgs: [login, senha]);
+    print('${maps.first}');
+    List<Cliente> users = List.generate(
+        maps.length,
+        (i) => Cliente(
+            id: maps[i]['id'],
+            nome: maps[i]['tx_nome'],
+            login: maps[i]['tx_login'],
+            senha: maps[i]["tx_senha"]));
 
-    if (response.statusCode == 200) {
-      return ClienteModel.fromJson(jsonDecode(response.body));
-    } else {
-      return null;
+    if (users.length > 0) {
+      return users[0];
     }
-  }
-
-  // login
-  //sera utilizado na page conta
-  Future<ClienteModel> editarUsuario(ClienteModel clienteModel) async {
-    Uri url = Uri.http(cabecalho, '/editar');
-
-    final response = await http.put(url,
-        headers: getHeadres(), body: json.encode(clienteModel.toJson()));
-
-    if (response.statusCode == 200) {
-      return ClienteModel.fromJson(jsonDecode(response.body));
-    } else {
-      return null;
-    }
-  }
-
-// //cadastro
-//   Future<List<Lista_animais_Model>> getlist(int nomeCliente) async {
-//     print(nomeCliente);
-
-//     Uri url = Uri.http(cabecalho, '/lista_animais/' + toString());
-
-//     final response = await http.get(url, headers: getHeadres());
-
-//     if (response.statusCode == 200) {
-//       Iterable l = json.decode(response.body);
-
-//       return List<Lista_animaisModel>.from(
-//           l.map((model) => Lista_animaisModel.fromJson(model)));
-//     } else {
-//       return [];
-//     }
-//   }
-
-  Map<String, String> getHeadres() {
-    Map<String, String> map = Map();
-    map.addAll({'accept': 'application/json'});
-    map.addAll({'content-type': 'application/json'});
-    return map;
+    return null;
   }
 }
