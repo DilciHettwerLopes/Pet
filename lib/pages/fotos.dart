@@ -8,34 +8,28 @@ class Fotos extends StatefulWidget {
 class _FotosState extends State<Fotos> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        color: Color(0xFFF2F3F6),
-        child: ListView( //.builder
-          children: <Widget>[
-            cardItem(),
-            cardItem(),
-            cardItem(),
-            cardItem(),
-            cardItem(),
-          ],
-        ),
-      ),
+    return SliverList(
+      delegate: SliverChildListDelegate(<Widget>[
+        cardItem(),
+        cardItem(),
+        cardItem(),
+        cardItem(),
+        cardItem(),
+      ]),
     );
   }
 }
 
 Widget cardItem() {
-  int red;
   return Card(
     child: Column(
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
         const ListTile(
-          leading: CircleAvatar(
-            backgroundImage: NetworkImage(
-                "https://baltaio.blob.core.windows.net/student-images/1edd5c50-bae9-11e8-8eb4-39de303632c1.jpg"),
-          ),
+          // leading: CircleAvatar(
+          //   backgroundImage: NetworkImage(
+          //       "https://baltaio.blob.core.windows.net/student-images/1edd5c50-bae9-11e8-8eb4-39de303632c1.jpg"),
+          // ),
           title: Text("Bruce Wayne"),
           subtitle: Text("09/05/2021"),
           trailing: Icon(Icons.more_vert),
