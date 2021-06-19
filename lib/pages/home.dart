@@ -60,7 +60,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                 flexibleSpace: Container(
                   decoration: new BoxDecoration(
                     image: DecorationImage(
-                      image: AssetImage("assets/dog.png"),
+                      image: AssetImage("assets/capa.png"),
                       fit: BoxFit.cover,
                     ),
                   ),
