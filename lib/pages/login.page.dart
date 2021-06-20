@@ -6,12 +6,8 @@ import 'package:petshop/pages/home.dart';
 import 'package:petshop/pages/reset-password.page.dart';
 import 'package:petshop/pages/signup.page.dart';
 
-void main() {
-  runApp(LoginPage());
-}
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
   LoginPage({Key key, this.title}) : super(key: key);
-
   final String title;
 
   @override
@@ -23,18 +19,15 @@ class _LoginPageState extends State<LoginPage> {
   final senhaController = TextEditingController();
 
   login({BuildContext context}) async {
-
     RetornoAutenticacao retorno = await Request.request.validarLogin(
         Autenticacao(senha:senhaController.text,login:loginController.text  ));
 
-    if(retorno!=null){
-
+    if (retorno != null) {
       Navigator.push(
           context,
           MaterialPageRoute(
               builder: (context) => Home(retornoAtenticacao: retorno)));
     }
-
   }
 
   @override

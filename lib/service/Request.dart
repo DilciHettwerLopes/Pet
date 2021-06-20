@@ -3,11 +3,11 @@ import 'package:petshop/model/Autenticacao_model.dart';
 import 'package:petshop/model/Cliente_model.dart';
 import 'package:petshop/model/RetornoAutenticacao.dart';
 import 'package:http/http.dart' as http;
+import 'package:petshop/model/animal_model.dart';
 
 class Request {
   static final Request request = Request();
   static final String cabecalho = 'http://dipets.online';
-  // static final String cabecalho='192.168.0.104:8080';
 
   Future<RetornoAutenticacao> validarLogin(Autenticacao autenticacao) async {
     Uri url = Uri.http(cabecalho, '/autenticacaoService');
@@ -40,7 +40,7 @@ class Request {
     }
   }
 
-  Future<ClienteModel> salvacliente(ClienteModel clienteModel) async {
+  Future<ClienteModel> salvarcliente(ClienteModel clienteModel) async {
     Uri url = Uri.http(cabecalho, 'salvar');
 
     final response = await http.post(url,
@@ -86,6 +86,18 @@ class Request {
 //     }
 //   }
 
+Future<AnimalModel> salvarAnimal(AnimalModel animalModel) async {
+    Uri url = Uri.http(cabecalho, 'salvar');
+
+    final response = await http.post(url,
+        headers: getHeadres(), body: json.encode(animalModel.toJson()));
+
+    if (response.statusCode == 200) {
+      return AnimalModel.fromJson(jsonDecode(response.body));
+    } else {
+      return null;
+    }
+  }
   Map<String, String> getHeadres() {
     Map<String, String> map = Map();
     map.addAll({'accept': 'application/json'});

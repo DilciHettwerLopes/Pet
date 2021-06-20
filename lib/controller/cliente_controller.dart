@@ -31,6 +31,6 @@ class ClienteController extends GetxController {
       endereco: enderecoCadastroController.text,
     );
 
-    await Request.request.salvacliente(clienteModel);
+    await Request.request.salvarcliente(clienteModel);
   }
 }

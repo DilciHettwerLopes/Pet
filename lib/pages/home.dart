@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:petshop/model/RetornoAutenticacao.dart';
 import 'package:petshop/pages/fotos.dart';
 import 'package:petshop/pages/lista_animais.dart';
 import 'package:petshop/pages/status.dart';
@@ -9,7 +10,7 @@ void main() => runApp(const Home());
 
 /// This is the main application widget.
 class Home extends StatelessWidget {
-  const Home({Key key}) : super(key: key);
+  const Home({Key key, RetornoAutenticacao retornoAtenticacao}) : super(key: key);
 
   static const String _title = 'Flutter Pet';
 
