@@ -19,7 +19,7 @@ class _LoginPageState extends State<LoginPage> {
   final senhaController = TextEditingController();
 
   login({BuildContext context}) async {
-    RetornoAutenticacao retorno = await Request.request.validarLogin(
+    RetornoAutenticacao retorno = await Request.validarLogin(
         Autenticacao(senha:senhaController.text,login:loginController.text  ));
 
     if (retorno != null) {
