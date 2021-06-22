@@ -6,14 +6,13 @@ import 'package:http/http.dart' as http;
 import 'package:petshop/model/animal_model.dart';
 
 class Api {
-  static final String cabecalho = 'http://dipets.online';
+  static final String cabecalho = 'https://dipets.online/wspet';
 
   Future<RetornoAutenticacao> validarLogin(Autenticacao autenticacao) async {
-    Uri url = Uri.http(cabecalho, '/autenticacaoService');
+    Uri url = Uri.parse(cabecalho + '/cliente/login');
 
     final response = await http.post(url,
         headers: getHeadres(), body: json.encode(autenticacao.toMap()));
-
     if (response.statusCode == 200) {
       return RetornoAutenticacao.fromMap(jsonDecode(response.body));
     } else {
