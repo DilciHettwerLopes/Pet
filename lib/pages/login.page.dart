@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:get/get_connect/http/src/request/request.dart';
 import 'package:petshop/model/Autenticacao_model.dart';
 import 'package:petshop/model/RetornoAutenticacao.dart';
 import 'package:petshop/pages/home.dart';
 import 'package:petshop/pages/reset-password.page.dart';
 import 'package:petshop/pages/signup.page.dart';
+import 'package:petshop/service/api.dart';
 
 class LoginPage extends StatefulWidget {
   LoginPage({Key key, this.title}) : super(key: key);
@@ -18,9 +18,11 @@ class _LoginPageState extends State<LoginPage> {
   final loginController = TextEditingController();
   final senhaController = TextEditingController();
 
+  final api = Api();
+
   login({BuildContext context}) async {
-    RetornoAutenticacao retorno = await Request.validarLogin(
-        Autenticacao(senha:senhaController.text,login:loginController.text  ));
+    RetornoAutenticacao retorno = await api.validarLogin(
+        Autenticacao(senha: senhaController.text, login: loginController.text));
 
     if (retorno != null) {
       Navigator.push(

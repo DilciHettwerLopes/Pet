@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:petshop/model/Cliente_model.dart';
-import 'package:petshop/service/Request.dart';
 
 class ClienteController extends GetxController {
   //listOfContacts é uma lista observável, quando sofrer atualizações

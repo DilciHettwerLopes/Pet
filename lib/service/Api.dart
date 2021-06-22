@@ -5,8 +5,7 @@ import 'package:petshop/model/RetornoAutenticacao.dart';
 import 'package:http/http.dart' as http;
 import 'package:petshop/model/animal_model.dart';
 
-class Request {
-  static final Request request = Request();
+class Api {
   static final String cabecalho = 'http://dipets.online';
 
   Future<RetornoAutenticacao> validarLogin(Autenticacao autenticacao) async {
@@ -86,7 +85,7 @@ class Request {
 //     }
 //   }
 
-Future<AnimalModel> salvarAnimal(AnimalModel animalModel) async {
+  Future<AnimalModel> salvarAnimal(AnimalModel animalModel) async {
     Uri url = Uri.http(cabecalho, 'salvar');
 
     final response = await http.post(url,
@@ -98,6 +97,7 @@ Future<AnimalModel> salvarAnimal(AnimalModel animalModel) async {
       return null;
     }
   }
+
   Map<String, String> getHeadres() {
     Map<String, String> map = Map();
     map.addAll({'accept': 'application/json'});
