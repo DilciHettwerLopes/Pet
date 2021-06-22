@@ -51,7 +51,7 @@ class _SignupPage extends State<SignupPage> {
                   ),
                 ),
                 child: SizedBox.expand(
-                  child: FlatButton(
+                  child: TextButton(
                     child: Icon(
                       Icons.add,
                       color: Colors.white,
@@ -135,7 +135,7 @@ class _SignupPage extends State<SignupPage> {
                 ),
               ),
               child: SizedBox.expand(
-                child: FlatButton(
+                child: TextButton(
                   child: Text(
                     "Cadastrar",
                     style: TextStyle(
@@ -158,7 +158,7 @@ class _SignupPage extends State<SignupPage> {
             Container(
               height: 40,
               alignment: Alignment.center,
-              child: FlatButton(
+              child: TextButton(
                 child: Text(
                   "Cancelar",
                   textAlign: TextAlign.center,

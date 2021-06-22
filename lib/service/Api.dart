@@ -102,6 +102,7 @@ class Api {
     Map<String, String> map = Map();
     map.addAll({'accept': 'application/json'});
     map.addAll({'content-type': 'application/json'});
+    //token
     return map;
   }
 }

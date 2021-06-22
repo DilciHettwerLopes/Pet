@@ -12,7 +12,8 @@ class _Lista_AnimaisState extends State<Lista_Animais> {
       delegate: SliverChildBuilderDelegate(
         (BuildContext context, int index) {
           return Container(
-            //TODO buscar informações do animal na API e repassar para o Widget animal um objeto do tipo Animal(que ainda deve ser criado)
+            //TODO buscar informações do animal na API e repassar para o Widget animal um objeto do tipo 
+            //Animal(que ainda deve ser criado)
             child: animal(index),
           );
         },
