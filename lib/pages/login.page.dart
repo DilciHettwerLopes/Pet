@@ -4,7 +4,7 @@ import 'package:petshop/model/RetornoAutenticacao.dart';
 import 'package:petshop/pages/home.dart';
 import 'package:petshop/pages/reset-password.page.dart';
 import 'package:petshop/pages/signup.page.dart';
-import 'package:petshop/service/api.dart';
+import 'package:petshop/service/Api.dart';
 
 class LoginPage extends StatefulWidget {
   LoginPage({Key key, this.title}) : super(key: key);

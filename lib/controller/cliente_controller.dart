@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:petshop/model/Cliente_model.dart';
+import 'package:petshop/service/Api.dart';
 
 class ClienteController extends GetxController {
   //listOfContacts é uma lista observável, quando sofrer atualizações
@@ -18,7 +19,7 @@ class ClienteController extends GetxController {
   TextEditingController cidadeCadastroController = TextEditingController();
 
   GlobalKey<FormState> form = GlobalKey<FormState>();
-
+  final api = Api();
   salvarCliente() async {
     ClienteModel clienteModel = ClienteModel(
       nome: nomeCadastroController.text,
@@ -30,6 +31,6 @@ class ClienteController extends GetxController {
       endereco: enderecoCadastroController.text,
     );
 
-    await Request.request.salvarcliente(clienteModel);
+    await api.salvarcliente(clienteModel);
   }
 }
