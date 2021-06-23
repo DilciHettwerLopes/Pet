@@ -140,12 +140,8 @@ class _LoginPageState extends State<LoginPage> {
                       )
                     ],
                   ),
-                  onPressed: () {
-                     Navigator.push(
-                       context,
-                       MaterialPageRoute(
-                         builder: (context) => Home(),
-                    home(context: context);
+                  onPressed: () async{
+                    await login(context: context);
                     //   ),
                     // );
                   },
