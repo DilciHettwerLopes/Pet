@@ -6,7 +6,7 @@ import 'package:http/http.dart' as http;
 import 'package:petshop/model/animal_model.dart';
 
 class Api {
- static final String cabecalho = 'https://dipets.online/wspet';
+ static final String cabecalho = 'https://dipets.online/wspet/rest';
 
   Future<RetornoAutenticacao> validarLogin(Autenticacao autenticacao) async {
     Uri url = Uri.parse(cabecalho + '/cliente/login');
@@ -52,9 +52,8 @@ class Api {
     }
   }
 
-  // login
   //sera utilizado na page conta
-  Future<ClienteModel> editarUsuario(ClienteModel clienteModel) async {
+  Future<ClienteModel> editarCliente(ClienteModel clienteModel) async {
     Uri url = Uri.http(cabecalho, '/editar');
 
     final response = await http.put(url,

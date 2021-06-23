@@ -140,10 +140,8 @@ class _LoginPageState extends State<LoginPage> {
                       )
                     ],
                   ),
-                  onPressed: () async{
+                  onPressed: () async {
                     await login(context: context);
-                    //   ),
-                    // );
                   },
                 ),
               ),
