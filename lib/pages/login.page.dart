@@ -141,11 +141,11 @@ class _LoginPageState extends State<LoginPage> {
                     ],
                   ),
                   onPressed: () {
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(
-                    //     builder: (context) => Home(),
-                    login(context: context);
+                     Navigator.push(
+                       context,
+                       MaterialPageRoute(
+                         builder: (context) => Home(),
+                    home(context: context);
                     //   ),
                     // );
                   },
