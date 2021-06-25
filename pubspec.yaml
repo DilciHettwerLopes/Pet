@@ -76,6 +76,7 @@ flutter:
   assets:
     - assets/logo.png
     - assets/bone.png
+    - assets/banho.jpg
     - assets/dog.png
     - assets/capa.png
     - assets/fb-icon.png

@@ -3,12 +3,12 @@ import 'package:petshop/model/Autenticacao_model.dart';
 import 'package:petshop/model/Cliente_model.dart';
 import 'package:petshop/model/RetornoAutenticacao.dart';
 import 'package:http/http.dart' as http;
-import 'package:petshop/model/animal_model.dart';
+import 'package:petshop/model/Animal_model.dart';
 
 class Api {
  static final String cabecalho = 'https://dipets.online/wspet/rest';
 
-  Future<RetornoAutenticacao> validarLogin(Autenticacao autenticacao) async {
+  Future<RetornoAutenticacao> validarLogin(Autenticacao autenticacao) async { //ok
     Uri url = Uri.parse(cabecalho + '/cliente/login');
 
     final response = await http.post(url,
@@ -63,6 +63,24 @@ class Api {
       return ClienteModel.fromJson(jsonDecode(response.body));
     } else {
       return null;
+    }
+  }
+
+// Fotos Animal 
+Future<List<AnimalModel>> getAnimal(int arquivoAnimal) async {
+    print(arquivoAnimal);
+
+    Uri url = Uri.http(cabecalho, '/fotosAnimal/' + arquivoAnimal.toString());
+
+    final response = await http.get(url, headers: getHeadres());
+
+    if (response.statusCode == 200) {
+      Iterable l = json.decode(response.body);
+
+      return List<AnimalModel>.from(
+          l.map((model) => AnimalModel.fromJson(model)));
+    } else {
+      return [];
     }
   }
 

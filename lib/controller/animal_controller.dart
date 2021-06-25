@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:petshop/service/Api.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
-import 'package:petshop/model/animal_model.dart';
+import 'package:petshop/model/Animal_model.dart';
 import 'package:get/get.dart';
 
 class AnimalController extends GetxController {

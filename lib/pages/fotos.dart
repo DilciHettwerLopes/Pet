@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_connect/http/src/request/request.dart';
 
 class Fotos extends StatefulWidget {
   @override
@@ -6,9 +7,32 @@ class Fotos extends StatefulWidget {
 }
 
 class _FotosState extends State<Fotos> {
-  @override
-  Widget build(BuildContext context) {
-    return SliverList(
+    Widget build(BuildContext context) {
+    // return Scaffold(
+    //   body: FutureBuilder<List>(
+    //     future: Request.getAnimal(),
+    //     initialData: List(),
+    //     builder: (context,snapshot){
+    //       return snapshot.hasData ? ListView.builder( itemCount: snapshot.data.length,
+    //                 itemBuilder: (x, int position) {
+    //                   final item = snapshot.data[position];
+    //                   return GestureDetector(
+    //                     onDoubleTap: () => print('abc'),
+    //                     child: Card(
+    //                       clipBehavior: Clip.antiAlias,
+    //                       child: Column(
+    //                         children: [
+    //                           ListTile(
+    //                             leading: Icon(Icons.arrow_drop_down_circle),
+    //                             title: Text('Pet ' + item.nome),
+    //                             subtitle: Text(
+    //                               'Imagem ' + item.idade,
+    //                               style: TextStyle(
+    //                                   color: Colors.black.withOpacity(0.6)),
+    //                             ),
+    //                           )
+      
+return SliverList(
       delegate: SliverChildListDelegate(<Widget>[
         cardItem(),
         cardItem(),
@@ -26,10 +50,6 @@ Widget cardItem() {
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
         const ListTile(
-          // leading: CircleAvatar(
-          //   backgroundImage: NetworkImage(
-          //       "https://baltaio.blob.core.windows.net/student-images/1edd5c50-bae9-11e8-8eb4-39de303632c1.jpg"),
-          // ),
           title: Text("Bruce Wayne"),
           subtitle: Text("09/05/2021"),
           trailing: Icon(Icons.more_vert),
