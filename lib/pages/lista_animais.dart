@@ -6,55 +6,55 @@ class Lista_Animais extends StatefulWidget {
 }
 
 class _Lista_AnimaisState extends State<Lista_Animais> {
-  @override
   Widget build(BuildContext context) {
     return SliverList(
-      delegate: SliverChildBuilderDelegate(
-        (BuildContext context, int index) {
-          return Container(
-            //TODO buscar informações do animal na API e repassar para o Widget animal um objeto do tipo 
-            //Animal(que ainda deve ser criado)
-            child: animal(index),
-          );
-        },
-        childCount: 15,
-      ),
+      delegate: SliverChildListDelegate(<Widget>[
+        cardItem(),
+        cardItem(),
+        cardItem(),
+        cardItem(),
+        cardItem(),
+      ]),
     );
   }
 }
 
-Widget animal(int animal) {
-  return ListTile(
-    //listview builder com a api
-    leading: GestureDetector(
-      onTap: () {},
-      child: Container(
-        width: 48,
-        height: 48,
-        padding: const EdgeInsets.symmetric(vertical: 4.0),
-        alignment: Alignment.center,
-        child: const CircleAvatar(),
-      ),
+Widget cardItem() {
+  return Card(
+    child: Column(
+      mainAxisSize: MainAxisSize.min,
+      children: <Widget>[
+        const ListTile(
+          title: Text("Bruce Wayne"),
+          subtitle: Text("09/05/2021"),
+        ),
+        Container(
+          child: Image.asset("assets/banho.jpg"),
+        ),
+        Container(
+          padding: EdgeInsets.all(10),
+          child: Text("Texto. "),
+        ),
+        ButtonTheme(
+          child: ButtonBar(
+            children: <Widget>[
+              IconButton(
+                icon: Icon(Icons.edit),
+                color: Colors.green,
+                onPressed: () {},
+              ),
+              IconButton(
+                icon: Icon(Icons.delete),
+                color: Colors.red,
+                onPressed: () {
+                  //TODO montar o diálogo de confirmação.
+                  //Get.defaultDialog()
+                },
+              ),
+            ],
+          ),
+        ),
+      ],
     ),
-    title: Text('Animal ' + animal.toString()),
-    trailing: Container(
-      width: 100,
-      child: Row(children: <Widget>[
-        IconButton(
-          icon: Icon(Icons.edit),
-          color: Colors.green,
-          onPressed: () {},
-        ),
-        IconButton(
-          icon: Icon(Icons.delete),
-          color: Colors.red,
-          onPressed: () {
-            //TODO montar o diálogo de confirmação.
-            //Get.defaultDialog()
-          },
-        ),
-      ]),
-    ), // column coom iconbuttom
-    focusColor: Colors.redAccent,
   );
 }
