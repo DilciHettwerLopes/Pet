@@ -88,7 +88,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
           BottomNavigationBarItem(
             icon: Icon(Icons.time_to_leave),
             label: 'Status',
-            backgroundColor: Colors.pink,
+            backgroundColor: Colors.red,
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.camera_alt),
@@ -98,11 +98,11 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
             label: 'Conta',
-            backgroundColor: Colors.pink,
+            backgroundColor: Colors.red,
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.amber[800],
+        selectedItemColor: Colors.amber[200],
         onTap: _onItemTapped,
       ),
     );

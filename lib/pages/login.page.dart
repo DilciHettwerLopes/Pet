@@ -49,6 +49,12 @@ class _LoginPageState extends State<LoginPage> {
               height: 20,
             ),
             TextFormField(
+              //   validator: (value) {
+              //   if (value == null || value.isEmpty) {
+              //     return 'Please enter some text';
+              //   }
+              //   return null;
+              // },
               controller: loginController,
               keyboardType: TextInputType.emailAddress,
               decoration: InputDecoration(

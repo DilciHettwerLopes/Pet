@@ -13,7 +13,21 @@ class _Lista_AnimaisState extends State<Lista_Animais> {
         cardItem(),
         cardItem(),
         cardItem(),
-        cardItem(),
+        SizedBox(height: 15.0),
+        Column(
+          children: [
+            FloatingActionButton.extended(
+              backgroundColor: const Color(0xff0277bd),
+              foregroundColor: Colors.white,
+              onPressed: () {
+                // Respond to button press
+              },
+              icon: Icon(Icons.pets),
+              label: Text('Cadastrar'),
+            ),
+          ],
+        ),
+        SizedBox(height: 15.0),
       ]),
     );
   }
@@ -25,15 +39,15 @@ Widget cardItem() {
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
         const ListTile(
-          title: Text("Bruce Wayne"),
-          subtitle: Text("09/05/2021"),
+          title: Text("Bruce"),
+          subtitle: Text("Idade: 1 ano"),
         ),
         Container(
           child: Image.asset("assets/banho.jpg"),
         ),
         Container(
           padding: EdgeInsets.all(10),
-          child: Text("Texto. "),
+          child: Text("Banho dia 25/06/2021."),
         ),
         ButtonTheme(
           child: ButtonBar(
