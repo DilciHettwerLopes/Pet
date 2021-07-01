@@ -24,6 +24,8 @@ dependencies:
   http: ^0.13.3
   slimy_card: ^1.0.4
   flutter_datetime_picker: ^1.5.1
+  snaplist: ^0.1.8
+  swipeable_card_stack: ^0.0.2
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
 dev_dependencies:

@@ -34,6 +34,7 @@ class _Lista_AnimaisState extends State<Lista_Animais> {
 }
 
 Widget cardItem() {
+
   return Card(
     child: Column(
       mainAxisSize: MainAxisSize.min,
@@ -44,10 +45,25 @@ Widget cardItem() {
         ),
         Container(
           child: Image.asset("assets/banho.jpg"),
+          width: 150,
+          height: 200,
         ),
         Container(
           padding: EdgeInsets.all(10),
-          child: Text("Banho dia 25/06/2021."),
+          //   child: Text("Banho dia 25/06/2021."),
+          child: Column(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                  // Text( 
+                      //item.nome,
+                  //  ),
+                  ],
+                ),
+              ]),
         ),
         ButtonTheme(
           child: ButtonBar(

@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:petshop/model/RetornoAutenticacao.dart';
 import 'package:petshop/pages/fotos.dart';
 import 'package:petshop/pages/lista_animais.dart';
-import 'package:petshop/pages/status.dart';
+import 'package:petshop/pages/Status.dart';
 import 'package:petshop/pages/user.dart';
 
 void main() => runApp(const Home());

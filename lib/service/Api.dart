@@ -70,7 +70,7 @@ class Api {
 Future<List<AnimalModel>> getAnimal(int arquivoAnimal) async {
     print(arquivoAnimal);
 
-    Uri url = Uri.http(cabecalho, '/fotosAnimal/' + arquivoAnimal.toString());
+    Uri url = Uri.http(cabecalho, arquivoAnimal.toString());
 
     final response = await http.get(url, headers: getHeadres());
 
