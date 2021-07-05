@@ -3,14 +3,15 @@ import 'package:get/get.dart';
 import 'package:petshop/model/RetornoAutenticacao.dart';
 import 'package:petshop/pages/fotos.dart';
 import 'package:petshop/pages/lista_animais.dart';
-import 'package:petshop/pages/Status.dart';
+import 'package:petshop/pages/adocao.dart';
 import 'package:petshop/pages/user.dart';
+
 
 void main() => runApp(const Home());
 
 /// This is the main application widget.
 class Home extends StatelessWidget {
-  const Home({Key key, RetornoAutenticacao retornoAtenticacao}) : super(key: key);
+  const Home({Key key, RetornoAutenticacao retornoAutenticacao}) : super(key: key);
 
   static const String _title = 'Flutter Pet';
 
@@ -36,7 +37,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   List<Widget> _widgetOptions = <Widget>[
     //Todos os elementos dessa lista devem ser um Widget do tipo SilverList, dentro dele você pode por um Container() e fazer o que precisar.
     Lista_Animais(),
-    Status(),
+    Adocao(),
     Fotos(),
     User(),
   ];
@@ -86,8 +87,8 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             backgroundColor: Colors.red,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.time_to_leave),
-            label: 'Status',
+            icon: Icon(Icons.favorite),
+            label: 'Adoção',
             backgroundColor: Colors.red,
           ),
           BottomNavigationBarItem(

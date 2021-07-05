@@ -50,16 +50,16 @@ Widget cardItem() {
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
         const ListTile(
-          title: Text("Bruce Wayne"),
-          subtitle: Text("09/05/2021"),
-          trailing: Icon(Icons.more_vert),
+          // title: Text("Bruce Wayne"),
+          // subtitle: Text("09/05/2021"),
+         // trailing: Icon(Icons.more_vert),
         ),
         Container(
           child: Image.asset("assets/post-picture-001.png"),
         ),
         Container(
           padding: EdgeInsets.all(10),
-          child: Text("Texto. "),
+          child: Text("Banho no dia 02/07/2021, peso: 10 kg"),
         ),
         ButtonTheme(
           child: ButtonBar(

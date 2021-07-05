@@ -20,19 +20,7 @@ class AnimalController extends GetxController {
 
   final api = Api();
 
-  get animalmodel => null; // verificar
-
-  getAnimal() async {
-    AnimalModel animalModel = AnimalModel(
-      nome: nomeListController.text,
-      raca: racaListController.text,
-      descricao: descricaoListController.text,
-      idade: idadeListController.text,
-      peso: pesoListController.text,
-    );
-
-   // await api.getAnimal(animalModel);
-  }
+  get animalmodel => null;
 
   salvarAnimal() async {
     AnimalModel animalModel = AnimalModel(
@@ -41,8 +29,10 @@ class AnimalController extends GetxController {
       descricao: descricaoListController.text,
       idade: idadeListController.text,
       peso: pesoListController.text,
+      adocao: adocaoListController.text,
+      clienteId: clienteIdLisController.text,
     );
 
-    await api.salvarAnimal(animalModel);
+    await api.salvarAnimal(animalmodel);
   }
 }
