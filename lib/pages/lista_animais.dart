@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:petshop/pages/cadastro.dart';
-import 'package:petshop/pages/fotos.dart';
 
 class Lista_Animais extends StatefulWidget {
   @override
@@ -41,47 +39,38 @@ class _Lista_AnimaisState extends State<Lista_Animais> {
 
 Widget cardItem() {
   return Card(
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(15.0),
+    ),
+    color: Colors.white,
     child: Column(
-      mainAxisSize: MainAxisSize.min,
+      mainAxisSize: MainAxisSize.max,
       children: <Widget>[
-        const ListTile(
-          title: Text("Bruce"),
-          subtitle: Text("Idade: 1 ano"),
-        ),
-        Container(
-          child: Image.asset("assets/banho.jpg"),
-          width: 200,
-          height: 200,
-        ),
-        Container(
-          padding: EdgeInsets.all(10),
-          //   child: Text("Banho dia 25/06/2021."),
-          child: Column(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Row(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    // Text(
-                    //item.nome,
-                    //  ),
-                  ],
-                ),
-              ]),
+        ListTile(
+          leading: ConstrainedBox(
+            constraints: BoxConstraints(
+              minWidth: 0,
+              minHeight: 100,
+              maxWidth: 90,
+              maxHeight: 100,
+            ),
+            child: Image.asset('assets/banho.jpg', fit: BoxFit.cover),
+          ),
+          title: Text('Faisca'),
+          subtitle: Text('Idade: 4 anos'),
         ),
         ButtonTheme(
           child: ButtonBar(
             children: <Widget>[
-              IconButton(
-                icon: Icon(Icons.edit),
-                color: Colors.green,
+              TextButton.icon(
+                  onPressed: () {},
+                  icon: Icon(Icons.edit, color: Color(0xFF00C853)),
+                  label: Text('Editar')),
+              TextButton.icon(
                 onPressed: () {},
-              ),
-              IconButton(
-                  icon: Icon(Icons.delete),
-                  color: Colors.red,
-                  onPressed: () => Get.to(Cadastro()))
+                icon: Icon(Icons.delete, color: Color(0xFFF44336)),
+                label: Text('Excluir'),
+              )
             ],
           ),
         ),

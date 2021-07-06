@@ -74,6 +74,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.2.0"
+  fluttery_dart2:
+    dependency: "direct main"
+    description:
+      name: fluttery_dart2
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.9"
   get:
     dependency: "direct main"
     description:
