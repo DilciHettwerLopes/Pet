@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:petshop/database/database.dart';
 import 'package:petshop/model/Autenticacao_model.dart';
 import 'package:petshop/model/Cliente_model.dart';
 import 'package:petshop/model/RetornoAutenticacao.dart';
@@ -6,10 +7,14 @@ import 'package:http/http.dart' as http;
 import 'package:petshop/model/Animal_model.dart';
 
 class Api {
- static final String cabecalho = 'https://dipets.online/wspet/rest';
+  static final String cabecalho = 'https://dipets.online/wspet/rest';
 
-  Future<RetornoAutenticacao> validarLogin(Autenticacao autenticacao) async { //ok
+  Future<RetornoAutenticacao> validarLogin(Autenticacao autenticacao) async {   
     Uri url = Uri.parse(cabecalho + '/cliente/login');
+    var ClienteId = await DatabaseLocal.instance.insert(ClienteModel(
+      nome: nome.text,
+      email: email.text,
+    ));
 
     final response = await http.post(url,
         headers: getHeaders(), body: json.encode(autenticacao.toMap()));
@@ -17,11 +22,10 @@ class Api {
     if (response.statusCode == 200) {
       return RetornoAutenticacao.fromMap(jsonDecode(response.body));
     } else {
-          return null;
+      return null;
     }
   }
 
-//cadastro
   Future<List<ClienteModel>> getCliente(int nomeCliente) async {
     print(nomeCliente);
 
@@ -39,6 +43,7 @@ class Api {
     }
   }
 
+//cadastro
   Future<ClienteModel> salvarcliente(ClienteModel clienteModel) async {
     Uri url = Uri.http(cabecalho, 'salvar');
 
@@ -66,8 +71,8 @@ class Api {
     }
   }
 
-// Fotos Animal 
-Future<List<AnimalModel>> getAnimal(int arquivoAnimal) async {
+// Fotos Animal
+  Future<List<AnimalModel>> getAnimal(int arquivoAnimal) async {
     print(arquivoAnimal);
 
     Uri url = Uri.http(cabecalho, '/fotosAnimal/' + arquivoAnimal.toString());
