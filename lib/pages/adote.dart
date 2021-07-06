@@ -45,6 +45,6 @@ class _AdoteState extends State<Adote> {
 
 Widget cardItem() {
   return Card(
-        child: Image.asset('assets/banho.jpg', fit: BoxFit.cover),
+    child: Image.asset('assets/banho.jpg', fit: BoxFit.cover),
   );
 }
