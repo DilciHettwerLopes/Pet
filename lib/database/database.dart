@@ -64,8 +64,8 @@ class DatabaseLocal {
 
 Future<int> getid() async {
     Database db = await instance.database;
-    var res = await db.query(table, orderBy: "$columnId DESC");
-    return res[0];
+    var result = await db.query(table); 
+      return result.isNotEmpty ? RetornoAutenticacao.fromMap(result.first).id : Null;
   }
 
     //apaga um registro na tabela

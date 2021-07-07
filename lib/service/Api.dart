@@ -13,7 +13,7 @@ class Api {
     Uri url = Uri.parse(cabecalho + '/cliente/login');
 
     final response = await http.post(url,
-        headers: getHeaders(), body: json.encode(autenticacao.toMap()));
+        headers: await getHeaders(), body: json.encode(autenticacao.toMap()));
 
     if (response.statusCode == 200) {
       RetornoAutenticacao user =
@@ -35,7 +35,7 @@ class Api {
 
     Uri url = Uri.http(cabecalho, '/cadastroCliente/' + nomeCliente.toString());
 
-    final response = await http.get(url, headers: getHeaders());
+    final response = await http.get(url, headers: await getHeaders());
 
     if (response.statusCode == 200) {
       Iterable l = json.decode(response.body);
@@ -52,7 +52,7 @@ class Api {
     Uri url = Uri.http(cabecalho, 'salvar');
 
     final response = await http.post(url,
-        headers: getHeaders(), body: json.encode(clienteModel.toJson()));
+        headers: await getHeaders(), body: json.encode(clienteModel.toJson()));
 
     if (response.statusCode == 200) {
       return ClienteModel.fromJson(jsonDecode(response.body));
@@ -66,7 +66,7 @@ class Api {
     Uri url = Uri.http(cabecalho, '/editar');
 
     final response = await http.put(url,
-        headers: getHeaders(), body: json.encode(clienteModel.toJson()));
+        headers: await getHeaders(), body: json.encode(clienteModel.toJson()));
 
     if (response.statusCode == 200) {
       return ClienteModel.fromJson(jsonDecode(response.body));
@@ -79,7 +79,7 @@ class Api {
   Future<List<AnimalModel>> getAnimal() async {
     Uri url = Uri.parse(cabecalho + '/animal');
 
-    final response = await http.get(url, headers: getHeaders());
+    final response = await http.get(url, headers: await getHeaders());
 
     if (response.statusCode == 200) {
       Iterable l = json.decode(response.body);
@@ -97,7 +97,7 @@ class Api {
 
     Uri url = Uri.http(cabecalho, '/fotosAnimal/' + arquivoAnimal.toString());
 
-    final response = await http.get(url, headers: getHeaders());
+    final response = await http.get(url, headers: await getHeaders());
 
     if (response.statusCode == 200) {
       Iterable l = json.decode(response.body);
@@ -115,7 +115,7 @@ class Api {
 
 //     Uri url = Uri.http(cabecalho, '/lista_animais/' + toString());
 
-//     final response = await http.get(url, headers: getHeadres());
+//     final response = await http.get(url, headers: await getHeadres());
 
 //     if (response.statusCode == 200) {
 //       Iterable l = json.decode(response.body);
@@ -131,7 +131,7 @@ class Api {
     Uri url = Uri.http(cabecalho, 'salvar');
 
     final response = await http.post(url,
-        headers: getHeaders(), body: json.encode(animalModel.toJson()));
+        headers: await getHeaders(), body: json.encode(animalModel.toJson()));
 
     if (response.statusCode == 200) {
       return AnimalModel.fromJson(jsonDecode(response.body));
@@ -140,11 +140,15 @@ class Api {
     }
   }
 
-  Map<String, String> getHeaders() {
+  Future<Map<String, String>> getHeaders() async {
     Map<String, String> map = Map();
     map.addAll({'accept': 'application/json'});
     map.addAll({'content-type': 'application/json'});
-    map.addAll({'clienteid': 'id'});
+    var id = await DatabaseLocal.instance.getid();
+    if (id > 0) {
+      map.addAll({'clienteid': id.toString() });
+    }
+
     //token
     return map;
   }
