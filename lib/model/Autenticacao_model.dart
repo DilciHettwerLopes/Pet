@@ -3,6 +3,7 @@ import "dart:convert";
 class Autenticacao {
   String senha;
   String login;
+  
   Autenticacao({this.senha, this.login});
 
   factory Autenticacao.fromMap(Map<String, dynamic> json) => new Autenticacao(

@@ -9,18 +9,22 @@ import 'package:petshop/model/Animal_model.dart';
 class Api {
   static final String cabecalho = 'https://dipets.online/wspet/rest';
 
-  Future<RetornoAutenticacao> validarLogin(Autenticacao autenticacao) async {   
+  Future<RetornoAutenticacao> validarLogin(Autenticacao autenticacao) async {
     Uri url = Uri.parse(cabecalho + '/cliente/login');
-    var ClienteId = await DatabaseLocal.instance.insert(ClienteModel(
-      nome: nome.text,
-      email: email.text,
-    ));
 
     final response = await http.post(url,
         headers: getHeaders(), body: json.encode(autenticacao.toMap()));
 
     if (response.statusCode == 200) {
-      return RetornoAutenticacao.fromMap(jsonDecode(response.body));
+      RetornoAutenticacao user =
+          RetornoAutenticacao.fromMap(jsonDecode(response.body));
+      DatabaseLocal.instance.insert(RetornoAutenticacao(
+          nome: user.nome,
+          email: 'ana@teste.com',
+          login: 'Ana',
+          senha: user.senha,
+          id: '123'));
+      return user;
     } else {
       return null;
     }
@@ -71,8 +75,24 @@ class Api {
     }
   }
 
+// Lista de Animal
+  Future<List<AnimalModel>> getAnimal() async {
+    Uri url = Uri.parse(cabecalho + '/animal');
+
+    final response = await http.get(url, headers: getHeaders());
+
+    if (response.statusCode == 200) {
+      Iterable l = json.decode(response.body);
+
+      return List<AnimalModel>.from(
+          l.map((model) => AnimalModel.fromJson(model)));
+    } else {
+      return [];
+    }
+  }
+
 // Fotos Animal
-  Future<List<AnimalModel>> getAnimal(int arquivoAnimal) async {
+  Future<List<AnimalModel>> getAnimalFotos(int arquivoAnimal) async {
     print(arquivoAnimal);
 
     Uri url = Uri.http(cabecalho, '/fotosAnimal/' + arquivoAnimal.toString());
@@ -124,6 +144,7 @@ class Api {
     Map<String, String> map = Map();
     map.addAll({'accept': 'application/json'});
     map.addAll({'content-type': 'application/json'});
+    map.addAll({'clienteid': 'id'});
     //token
     return map;
   }

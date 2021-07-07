@@ -1,16 +1,20 @@
-import 'package:petshop/model/cliente_model.dart';
+import 'dart:convert';
+
+import 'package:petshop/model/RetornoAutenticacao.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 
 class DatabaseLocal {
-  static final _databaseName = "login.db";
-  static final _databaseVersion = 1;
+  static final _databaseName = "login1.db";
+  static final _databaseVersion = 2;
 
-  static final table = "cliente";
+  static final table = "retorno";
 
   static final columnId = 'id';
   static final columnEmail = 'email';
   static final columnNome = 'nome';
+  static final columnSenha = 'senha';
+   static final columnLogin = 'login';
 
   //"Executa" a classe
   DatabaseLocal._privateConstructor();
@@ -39,19 +43,30 @@ class DatabaseLocal {
           CREATE TABLE $table (
             $columnId INTEGER PRIMARY KEY AUTOINCREMENT,
             $columnNome TEXT NOT NULL,
-            $columnEmail TEXT NOT NULL
+            $columnEmail TEXT NOT NULL,
+             $columnSenha TEXT NOT NULL,
+             $columnLogin TEXT NOT NULL
             )
           ''');
   }
     //grava um registro na tabela
-    Future<int> insert(ClienteModel cliente) async {
+    Future<int> insert(RetornoAutenticacao retorno) async {
       //aguarda a instância do banco ser acessível.
+      print(retorno.toMap().toString());
+
+
       Database db = await instance.database;
       //insere os dados no banco de dados conforme o mapa de campos da
       //classe/model CModel
-      var res = await db.insert(table, cliente.toJson());
+      var res = await db.insert(table, retorno.toMap());
       return res;
     }
+
+Future<int> getid() async {
+    Database db = await instance.database;
+    var res = await db.query(table, orderBy: "$columnId DESC");
+    return res[0];
+  }
 
     //apaga um registro na tabela
     Future<int> delete(int id) async {
@@ -60,12 +75,12 @@ class DatabaseLocal {
     }
 
     //atualiza um registro na tabela
-    Future<int> update(int id, ClienteModel contact) async {
+    Future<int> update(int id, RetornoAutenticacao contact) async {
       //aguarda a instância do banco ser acessível.
       Database db = await instance.database;
       return await db.update(
         table,
-        contact.toJson(),
+        contact.toMap(),
         where: '$columnId = ?',
         whereArgs: [id],
       );
