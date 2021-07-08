@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get/get_connect/http/src/request/request.dart';
+
 
 class Fotos extends StatefulWidget {
   @override
@@ -10,7 +10,7 @@ class _FotosState extends State<Fotos> {
     Widget build(BuildContext context) {
     // return Scaffold(
     //   body: FutureBuilder<List>(
-    //     future: Request.getAnimal(),
+    //     future: Api.getAnimal(),
     //     initialData: List(),
     //     builder: (context,snapshot){
     //       return snapshot.hasData ? ListView.builder( itemCount: snapshot.data.length,

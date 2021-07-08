@@ -4,12 +4,13 @@ import 'package:petshop/model/Autenticacao_model.dart';
 import 'package:petshop/model/Cliente_model.dart';
 import 'package:petshop/model/RetornoAutenticacao.dart';
 import 'package:http/http.dart' as http;
-import 'package:petshop/model/Animal_model.dart';
+import 'package:petshop/model/animal_model.dart';
 
 class Api {
   static final String cabecalho = 'https://dipets.online/wspet/rest';
 
   Future<RetornoAutenticacao> validarLogin(Autenticacao autenticacao) async {
+    //ok
     Uri url = Uri.parse(cabecalho + '/cliente/login');
 
     final response = await http.post(url,
@@ -23,7 +24,7 @@ class Api {
           email: 'ana@teste.com',
           login: 'Ana',
           senha: user.senha,
-          id: '123'));
+          id: user.id));
       return user;
     } else {
       return null;
@@ -76,18 +77,17 @@ class Api {
   }
 
 // Lista de Animal
-  Future<List<AnimalModel>> getAnimal() async {
-    Uri url = Uri.parse(cabecalho + '/animal');
-
-    final response = await http.get(url, headers: await getHeaders());
-
+   Future<List<AnimalModel>> getAnimal() async {
+    Uri cabecalho = Uri.parse('/animal');
+    http.Response response =
+        await http.get(cabecalho, headers: await getHeaders());
     if (response.statusCode == 200) {
-      Iterable l = json.decode(response.body);
-
-      return List<AnimalModel>.from(
-          l.map((model) => AnimalModel.fromJson(model)));
+      List jsonResponse = json.decode(response.body);
+      return jsonResponse
+          .map((model) => new AnimalModel.fromJson(model))
+          .toList();
     } else {
-      return [];
+      throw Exception('Ocorreu um erro inesperado');
     }
   }
 
@@ -112,11 +112,8 @@ class Api {
 // //cadastro
 //   Future<List<Lista_animais_Model>> getlist(int nomeCliente) async {
 //     print(nomeCliente);
-
 //     Uri url = Uri.http(cabecalho, '/lista_animais/' + toString());
-
 //     final response = await http.get(url, headers: await getHeadres());
-
 //     if (response.statusCode == 200) {
 //       Iterable l = json.decode(response.body);
 
@@ -144,9 +141,9 @@ class Api {
     Map<String, String> map = Map();
     map.addAll({'accept': 'application/json'});
     map.addAll({'content-type': 'application/json'});
-    var id = await DatabaseLocal.instance.getid();
+    var id = 1; //await DatabaseLocal.instance.getid();
     if (id > 0) {
-      map.addAll({'clienteid': id.toString() });
+      map.addAll({'clienteid': id.toString()});
     }
 
     //token
