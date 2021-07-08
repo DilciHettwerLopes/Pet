@@ -17,6 +17,7 @@ class AnimalController extends GetxController {
   TextEditingController clienteIdLisController = TextEditingController();
 
   GlobalKey<FormState> form = GlobalKey<FormState>();
+  List<AnimalModel> animais;
 
   final api = Api();
 
@@ -34,5 +35,9 @@ class AnimalController extends GetxController {
     );
 
     await api.salvarAnimal(animalmodel);
+  }
+
+  buscarAnimais() async {
+    animais = await api.getAnimal();
   }
 }

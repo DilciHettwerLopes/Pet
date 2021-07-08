@@ -77,7 +77,7 @@ class Api {
   }
 
 // Lista de Animal
-   Future<List<AnimalModel>> getAnimal() async {
+  Future<List<dynamic>> getAnimal() async {
     Uri cabecalho = Uri.parse('/animal');
     http.Response response =
         await http.get(cabecalho, headers: await getHeaders());
