@@ -1,4 +1,4 @@
-class AnimalModel {
+class AnimalM {
   String id;
   String nome;
   String raca;
@@ -9,7 +9,7 @@ class AnimalModel {
   String clienteId;
   Null arquivo;
 
-  AnimalModel(
+  AnimalM(
       {this.id,
       this.nome,
       this.raca,
@@ -20,7 +20,7 @@ class AnimalModel {
       this.clienteId,
       this.arquivo});
 
-  AnimalModel.fromJson(Map<String, dynamic> json) {
+  AnimalM.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     nome = json['nome'];
     raca = json['raca'];

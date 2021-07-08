@@ -77,22 +77,25 @@ class Api {
   }
 
 // Lista de Animal
-  Future<List<dynamic>> getAnimal() async {
-    Uri cabecalho = Uri.parse('/animal');
-    http.Response response =
-        await http.get(cabecalho, headers: await getHeaders());
+  Future<List<AnimalM>> getAnimal() async {
+    Uri url = Uri.parse(cabecalho + '/animal');
+
+    final response = await http.get(url, headers: await getHeaders());
+
+    print(response.body);
     if (response.statusCode == 200) {
-      List jsonResponse = json.decode(response.body);
-      return jsonResponse
-          .map((model) => new AnimalModel.fromJson(model))
+      List<AnimalM> animals = json
+          .decode(response.body)
+          .map<AnimalM>((map) => AnimalM.fromJson(map))
           .toList();
+      return animals;
     } else {
       throw Exception('Ocorreu um erro inesperado');
     }
   }
 
 // Fotos Animal
-  Future<List<AnimalModel>> getAnimalFotos(int arquivoAnimal) async {
+  Future<List<AnimalM>> getAnimalFotos(int arquivoAnimal) async {
     print(arquivoAnimal);
 
     Uri url = Uri.http(cabecalho, '/fotosAnimal/' + arquivoAnimal.toString());
@@ -102,8 +105,7 @@ class Api {
     if (response.statusCode == 200) {
       Iterable l = json.decode(response.body);
 
-      return List<AnimalModel>.from(
-          l.map((model) => AnimalModel.fromJson(model)));
+      return List<AnimalM>.from(l.map((model) => AnimalM.fromJson(model)));
     } else {
       return [];
     }
@@ -124,14 +126,14 @@ class Api {
 //     }
 //   }
 
-  Future<AnimalModel> salvarAnimal(AnimalModel animalModel) async {
+  Future<AnimalM> salvarAnimal(AnimalM animalModel) async {
     Uri url = Uri.http(cabecalho, 'salvar');
 
     final response = await http.post(url,
         headers: await getHeaders(), body: json.encode(animalModel.toJson()));
 
     if (response.statusCode == 200) {
-      return AnimalModel.fromJson(jsonDecode(response.body));
+      return AnimalM.fromJson(jsonDecode(response.body));
     } else {
       return null;
     }

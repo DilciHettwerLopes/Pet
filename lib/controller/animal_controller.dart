@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:petshop/model/animal_model.dart';
 import 'package:petshop/service/Api.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
-import 'package:petshop/model/Animal_model.dart';
 import 'package:get/get.dart';
 
 class AnimalController extends GetxController {
@@ -17,14 +17,13 @@ class AnimalController extends GetxController {
   TextEditingController clienteIdLisController = TextEditingController();
 
   GlobalKey<FormState> form = GlobalKey<FormState>();
-  List<AnimalModel> animais;
 
   final api = Api();
 
   get animalmodel => null;
 
   salvarAnimal() async {
-    AnimalModel animalModel = AnimalModel(
+    AnimalM animalModel = AnimalM(
       nome: nomeListController.text,
       raca: racaListController.text,
       descricao: descricaoListController.text,
@@ -37,7 +36,7 @@ class AnimalController extends GetxController {
     await api.salvarAnimal(animalmodel);
   }
 
-  buscarAnimais() async {
-    animais = await api.getAnimal();
+  Future<List<AnimalM>> buscarAnimais() async {
+    return await api.getAnimal();
   }
 }
