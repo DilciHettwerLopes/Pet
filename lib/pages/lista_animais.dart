@@ -35,6 +35,7 @@ class _Lista_AnimaisState extends State<Lista_Animais> {
                       child: ListTile(
                         leading: Icon(Icons.arrow_drop_down_circle),
                         title: Text('Pet ' + animal.nome),
+<<<<<<< HEAD
                         // subtitle: Text(
                         //   'Imagem ' +
                         //       animal
@@ -42,6 +43,15 @@ class _Lista_AnimaisState extends State<Lista_Animais> {
                         //   style:
                         //       TextStyle(color: Colors.black.withOpacity(0.6)),
                         // ),
+=======
+                        subtitle: Text(
+                          'Imagem ' +
+                              animal
+                                  .arquivo, //TODO criar um Image.network. O retorno da api na posição arquivo deve ser a URL completa da imagem.
+                          style:
+                              TextStyle(color: Colors.black.withOpacity(0.6)),
+                        ),
+>>>>>>> f41608373a6fbe89507d8df5841ce2300c17a67d
                       ),
                     );
                   },
