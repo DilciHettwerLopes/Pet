@@ -3,7 +3,6 @@ import 'package:petshop/pages/lista_animais.dart';
 
 class User extends StatefulWidget {
   User({Key key, this.title}) : super(key: key);
-
   final String title;
 
   @override

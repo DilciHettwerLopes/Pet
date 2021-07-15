@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:petshop/model/RetornoAutenticacao.dart';
-//import 'package:petshop/pages/adocao.dart';
-import 'package:petshop/pages/adote.dart';
+import 'package:petshop/pages/adocao.dart';
+//import 'package:petshop/pages/adote.dart';
 import 'package:petshop/pages/fotos.dart';
 import 'package:petshop/pages/lista_animais.dart';
 import 'package:petshop/pages/user.dart';
@@ -37,10 +37,10 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   int _selectedIndex = 0;
   List<Widget> _widgetOptions = <Widget>[
     //Todos os elementos dessa lista devem ser um Widget do tipo SilverList, dentro dele você pode por um Container() e fazer o que precisar.
-    Lista_Animais(),
-    Adote(),
-    Fotos(),
     User(),
+    Adocao(),
+    Fotos(),
+    Lista_Animais(),
   ];
 
   void _onItemTapped(int index) {
