@@ -37,6 +37,7 @@ class _AdocaoState extends State<Adocao> {
         cardItem(),
       ]),
     );
+
   }
 }
 
@@ -90,6 +91,7 @@ Widget cardItem() {
               backgroundColor: const Color(0xffd50000),
               foregroundColor: Colors.white,
               onPressed: () {
+                
                 // Navigator.push(
                 //   context,
                 //   MaterialPageRoute(builder: (context) => Cadastro()),
@@ -115,3 +117,5 @@ Widget cardItem() {
     ),
   );
 }
+
+

@@ -49,11 +49,7 @@ Widget cardItem() {
     child: Column(
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
-         ListTile(
-          // title: Text("Bruce Wayne"),
-          // subtitle: Text("09/05/2021"),
-         // trailing: Icon(Icons.more_vert),
-        ),
+         ListTile(),
         Container(
           child: Image.asset("assets/post-picture-001.png"),
         ),
