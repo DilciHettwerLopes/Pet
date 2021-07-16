@@ -13,8 +13,9 @@ class _Lista_AnimaisState extends State<Lista_Animais> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: FutureBuilder<List<AnimalM>>(
+    return SliverList(
+        delegate: SliverChildListDelegate(<Widget>[
+      FutureBuilder<List<AnimalM>>(
         future: _animalController.buscarAnimais(),
         builder: (context, index) {
           switch (index.connectionState) {
@@ -28,22 +29,11 @@ class _Lista_AnimaisState extends State<Lista_Animais> {
             case ConnectionState.done:
               if (index.data != null && index.data.isNotEmpty) {
                 return ListView.builder(
+                  shrinkWrap: true,
                   itemCount: index.data.length,
                   itemBuilder: (context, key) {
                     AnimalM animal = List<AnimalM>.from(index.data)[key];
-                    return Card(
-                      child: ListTile(
-                        leading: Icon(Icons.arrow_drop_down_circle),
-                        title: Text('Pet ' + animal.nome),
-                        // subtitle: Text(
-                        //   'Imagem ' +
-                        //       animal
-                        //           .arquivo, //TODO criar um Image.network. O retorno da api na posição arquivo deve ser a URL completa da imagem.
-                        //   style:
-                        //       TextStyle(color: Colors.black.withOpacity(0.6)),
-                        // ),
-                      ),
-                    );
+                    return cardItem(animal);
                   },
                 );
               }
@@ -51,6 +41,11 @@ class _Lista_AnimaisState extends State<Lista_Animais> {
           return null;
         },
       ),
-    );
+    ]));
   }
+}
+
+Widget cardItem(AnimalM animal) {
+  return Text(animal.nome);
+  //TODO criar um exibicao melhorada do animal com sua respectiva imagem
 }
