@@ -127,7 +127,7 @@ class _CadastroState extends State<Cadastro> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => Lista_Animais()),
+                    MaterialPageRoute(builder: (context) => ListaAnimais()),
                   );
                 },
                 label: Text('Salvar'),

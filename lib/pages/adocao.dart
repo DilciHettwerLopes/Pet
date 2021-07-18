@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:petshop/pages/cadastro.dart';
 
@@ -8,7 +9,10 @@ class Adocao extends StatefulWidget {
 
 class _AdocaoState extends State<Adocao> {
   Widget build(BuildContext context) {
+    
+    
     // return Scaffold(
+      
     //   body: FutureBuilder<List>(
     //     future: Api.getAnimal(),
     //     initialData: List(),
@@ -37,12 +41,13 @@ class _AdocaoState extends State<Adocao> {
         cardItem(),
       ]),
     );
-
+    
   }
 }
 
 Widget cardItem() {
   String textcenter;
+  
   return Card(
     child: Column(
       mainAxisSize: MainAxisSize.min,
@@ -58,6 +63,18 @@ Widget cardItem() {
           padding: EdgeInsets.all(10),
           child: Text("Gato, 03 meses"),
         ),
+        Column(          
+          children: [
+            FloatingActionButton.extended(
+              backgroundColor: const Color(0xffd50000),
+              foregroundColor: Colors.white,
+              onPressed: () { },
+              icon: Icon(Icons.favorite),
+              label: Text('Adotar'),
+            ),
+          ],
+        ),
+        SizedBox(height: 15.0),
         Container(
           width: 400,
           height: 400,
@@ -67,6 +84,18 @@ Widget cardItem() {
           padding: EdgeInsets.all(10),
           child: Text("Gato, 02 meses"),
         ),
+        Column(          
+          children: [
+            FloatingActionButton.extended(
+              backgroundColor: const Color(0xffd50000),
+              foregroundColor: Colors.white,
+              onPressed: () { },
+              icon: Icon(Icons.favorite),
+              label: Text('Adotar'),
+            ),
+          ],
+        ),
+        SizedBox(height: 15.0),
         Container(
           width: 400,
           height: 400,
@@ -76,6 +105,18 @@ Widget cardItem() {
           padding: EdgeInsets.all(10),
           child: Text("Cachorro, 06 meses"),
         ),
+        Column(          
+          children: [
+            FloatingActionButton.extended(
+              backgroundColor: const Color(0xffd50000),
+              foregroundColor: Colors.white,
+              onPressed: () { },
+              icon: Icon(Icons.favorite),
+              label: Text('Adotar'),
+            ),
+          ],
+        ),
+        SizedBox(height: 15.0),
         Container(
           width: 450,
           height: 450,
@@ -85,18 +126,12 @@ Widget cardItem() {
           padding: EdgeInsets.all(10),
           child: Text("Cachorro, 03 meses"),
         ),
-        Column(
+        Column(          
           children: [
             FloatingActionButton.extended(
               backgroundColor: const Color(0xffd50000),
               foregroundColor: Colors.white,
-              onPressed: () {
-                
-                // Navigator.push(
-                //   context,
-                //   MaterialPageRoute(builder: (context) => Cadastro()),
-                // );
-              },
+              onPressed: () { },
               icon: Icon(Icons.favorite),
               label: Text('Adotar'),
             ),
@@ -117,5 +152,3 @@ Widget cardItem() {
     ),
   );
 }
-
-

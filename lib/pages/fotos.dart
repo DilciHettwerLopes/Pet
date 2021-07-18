@@ -57,20 +57,20 @@ Widget cardItem() {
           padding: EdgeInsets.all(10),
           child: Text("Banho no dia 02/07/2021, peso: 10 kg"),
         ),
-        ButtonTheme(
-          child: ButtonBar(
-            children: <Widget>[
-              TextButton(
-                child: Icon(Icons.favorite),
-                onPressed: () {},
-              ),
-              TextButton(
-                child: Icon(Icons.share),
-                onPressed: () {},
-              ),
-            ],
-          ),
-        ),
+        // ButtonTheme(
+        //   child: ButtonBar(
+        //     children: <Widget>[
+        //       TextButton(
+        //         child: Icon(Icons.favorite),
+        //         onPressed: () {},
+        //       ),
+        //       TextButton(
+        //         child: Icon(Icons.share),
+        //         onPressed: () {},
+        //       ),
+        //     ],
+        //   ),
+       // ),
       ],
     ),
   );

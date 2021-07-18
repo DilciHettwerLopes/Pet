@@ -183,7 +183,7 @@ class _UserState extends State<User> {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => Lista_Animais()),
+                MaterialPageRoute(builder: (context) => ListaAnimais()),
               );
             },
           ),
