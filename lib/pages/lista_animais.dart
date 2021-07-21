@@ -18,8 +18,8 @@ class _ListaAnimaisState extends State<ListaAnimais> {
 return SliverList(
       delegate: SliverChildListDelegate(<Widget>[
         cardItem(),
-        cardItem(),
-        cardItem(),
+       // cardItem(),
+       // cardItem(),
       
  SizedBox(height: 15.0),
         Column(
@@ -125,21 +125,41 @@ return SliverList(
   Widget cardItem() {
   return Card(
     child: Column(
-      
-      children: <Widget>[
+            children: <Widget>[
          ListTile(),
          Container(
       decoration:
           BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(20))),
-      width: 200,
-      height: 200,
+      width: 300,
+      height: 300,
       child: Image.asset("assets/put2.jpg"),
     ),
          Container(
       padding: EdgeInsets.all(10),
     //  child: Text(animal.nome),
         ),
-        // ButtonTheme(
+        Container(
+      decoration:
+          BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(20))),
+      width: 300,
+      height: 300,
+      child: Image.asset("assets/gato2.jpg"),
+    ),
+         Container(
+      padding: EdgeInsets.all(10),
+    //  child: Text(animal.nome),
+        ),
+        Container(
+      decoration:
+          BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(20))),
+      width: 300,
+      height: 300,
+      child: Image.asset("assets/15.jpg"),
+    ),
+         Container(
+      padding: EdgeInsets.all(10),
+    //  child: Text(animal.nome),
+        ),// ButtonTheme(
         //   child: ButtonBar(
         //     children: <Widget>[
         //       TextButton(
@@ -155,6 +175,7 @@ return SliverList(
        // ),
       ],
     ),
+    
   );
 }
   //return Text(animal.nome);
