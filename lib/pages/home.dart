@@ -37,8 +37,9 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   int _selectedIndex = 0;
   List<Widget> _widgetOptions = <Widget>[
     //Todos os elementos dessa lista devem ser um Widget do tipo SilverList, dentro dele você pode por um Container() e fazer o que precisar.
-    ListaAnimais(),
+    
     Adocao(),
+    ListaAnimais(),
     Fotos(),
     User(),
   ];
@@ -83,14 +84,15 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.pets),
-            label: 'Home',
-            backgroundColor: Colors.red,
-          ),
+          
           BottomNavigationBarItem(
             icon: Icon(Icons.favorite),
             label: 'Adoção',
+            backgroundColor: Colors.red,
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.pets),
+            label: 'Animais',
             backgroundColor: Colors.red,
           ),
           BottomNavigationBarItem(
