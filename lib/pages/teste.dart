@@ -10,7 +10,8 @@ class ListaAnimais extends StatefulWidget {
 }
 
 //class _ListaAnimaisState extends State<ListaAnimais> {
-  // final AnimalController _animalController = Get.put(AnimalController());
+ //
+ // final AnimalController _animalController = Get.put(AnimalController());
 
 class _ListaAnimaisState extends State<ListaAnimais> {
     Widget build(BuildContext context) {
@@ -21,38 +22,14 @@ return SliverList(
         cardItem(),
         cardItem(),
       
- SizedBox(height: 15.0),
-        Column(
-          children: [
-            FloatingActionButton.extended(
-              backgroundColor: const Color(0xff0277bd),
-              foregroundColor: Colors.white,
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => Cadastro()),
-                );
-              },
-              icon: Icon(Icons.pets),
-              label: Text('Cadastrar'),
-            ),
-             SizedBox(height: 15.0),
-          ],
-
-        )
-      ]
-      
-      ),
-      
+      ]),
     );
-   
-      
   }
 }
-  // @override
-  // Widget build(BuildContext context) {
-  //   return SliverList(
-  //       delegate: SliverChildListDelegate(<Widget>[
+  @override
+  Widget build(BuildContext context) {
+    return SliverList(
+        delegate: SliverChildListDelegate(<Widget>[
       // FutureBuilder<List<AnimalM>>(
       //   future: _animalController.buscarAnimais(),
       //   builder: (context, index) {
@@ -81,26 +58,30 @@ return SliverList(
       //     return null;
       //   },
       // ),
-      // SizedBox(height: 15.0),
-      //   Column(
-      //     children: [
-      //       FloatingActionButton.extended(
-      //         backgroundColor: const Color(0xff0277bd),
-      //         foregroundColor: Colors.white,
-      //         onPressed: () {
-      //           Navigator.push(
-      //             context,
-      //             MaterialPageRoute(builder: (context) => Cadastro()),
-      //           );
-      //         },
-      //         icon: Icon(Icons.pets),
-      //         label: Text('Cadastrar'),
-      //       ),
-      //        SizedBox(height: 15.0),
-      //     ],
-      //   ),
+      SizedBox(height: 15.0),
+        Column(
+          children: [
+            FloatingActionButton.extended(
+              backgroundColor: const Color(0xff0277bd),
+              foregroundColor: Colors.white,
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Cadastro()),
+                );
+              },
+              icon: Icon(Icons.pets),
+              label: Text('Cadastrar'),
+            ),
+             SizedBox(height: 15.0),
+          ],
+        ),
     
-    // Widget cardItem(AnimalM animal) {
+    ]));
+  }
+
+
+// Widget cardItem(AnimalM animal) {
 //   return Card(
 //       child: Column(
 //         //mainAxisSize: MainAxisSize.min, 
@@ -125,7 +106,7 @@ return SliverList(
   Widget cardItem() {
   return Card(
     child: Column(
-      
+      mainAxisSize: MainAxisSize.min,
       children: <Widget>[
          ListTile(),
          Container(
