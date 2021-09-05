@@ -181,10 +181,11 @@ class _UserState extends State<User> {
               textAlign: TextAlign.center,
             ),
             onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => ListaAnimais()),
-              );
+Navigator.pop(context);
+              // Navigator.push(
+              //   context,
+              //   MaterialPageRoute(builder: (context) => ListaAnimais()),
+            //  );
             },
           ),
         ),
