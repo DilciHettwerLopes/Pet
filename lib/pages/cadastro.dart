@@ -125,10 +125,11 @@ class _CadastroState extends State<Cadastro> {
                 backgroundColor: const Color(0xff0277bd),
                 foregroundColor: Colors.white,
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => Lista_Animais()),
-                  );
+                  Navigator.pop(context);
+                  // Navigator.push(
+                  //   context,
+                  //   MaterialPageRoute(builder: (context) => ListaAnimais()),
+                  //);
                 },
                 label: Text('Salvar'),
               ),

@@ -18,7 +18,7 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return  MaterialApp(
       title: _title,
       debugShowCheckedModeBanner: false,
       home: MyStatefulWidget(),
@@ -37,10 +37,11 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   int _selectedIndex = 0;
   List<Widget> _widgetOptions = <Widget>[
     //Todos os elementos dessa lista devem ser um Widget do tipo SilverList, dentro dele você pode por um Container() e fazer o que precisar.
-    User(),
+    
     Adocao(),
+    ListaAnimais(),
     Fotos(),
-    Lista_Animais(),
+    User(),
   ];
 
   void _onItemTapped(int index) {
@@ -55,6 +56,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
       body: Stack(
         children: <Widget>[
           CustomScrollView(
+            scrollDirection: Axis.vertical,
             slivers: <Widget>[
               SliverAppBar(
                 pinned: true,
@@ -82,14 +84,15 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.pets),
-            label: 'Home',
-            backgroundColor: Colors.red,
-          ),
+          
           BottomNavigationBarItem(
             icon: Icon(Icons.favorite),
             label: 'Adoção',
+            backgroundColor: Colors.red,
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.pets),
+            label: 'Animais',
             backgroundColor: Colors.red,
           ),
           BottomNavigationBarItem(

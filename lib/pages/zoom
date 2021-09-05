@@ -1,0 +1,33 @@
+import 'package:flutter/material.dart';
+
+class Zoom extends StatefulWidget {
+  @override
+  _ZoomState createState() => _ZoomState();
+}
+
+class _ZoomState extends State<Zoom> {
+  // Widget build(BuildContext context) {
+  //   Widget cardItem(AnimalM animal) {
+  // // return Text(animal.nome);
+  // return Card(
+  //     child: Column(
+  //   mainAxisSize: MainAxisSize.min,
+  //   children: <Widget>[
+  //     ListTile(
+  //      // leading: Image.asset("assets/banho.jpg"),
+  //       title: Text('Nome: ' + animal.nome),
+  //       subtitle: Text(
+  //         animal.raca,
+  //         style: TextStyle(color: Colors.black.withOpacity(0.6)),
+  //       ),
+  //     ),
+  //     // Padding(
+  //     // padding: EdgeInsets.all(16.0),
+  //     // 
+  //     // child: Image.network(animal.arquivo),
+  //     // child: Image.asset("assets/banho.jpg"),
+  //     //  ),
+  //   ],
+  // ));
+   }
+}

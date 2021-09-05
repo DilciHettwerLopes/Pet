@@ -10,7 +10,8 @@ class ListaAnimais extends StatefulWidget {
 }
 
 //class _ListaAnimaisState extends State<ListaAnimais> {
-  // final AnimalController _animalController = Get.put(AnimalController());
+ //
+ // final AnimalController _animalController = Get.put(AnimalController());
 
 class _ListaAnimaisState extends State<ListaAnimais> {
     Widget build(BuildContext context) {
@@ -18,41 +19,17 @@ class _ListaAnimaisState extends State<ListaAnimais> {
 return SliverList(
       delegate: SliverChildListDelegate(<Widget>[
         cardItem(),
-       // cardItem(),
-       // cardItem(),
+        cardItem(),
+        cardItem(),
       
- SizedBox(height: 15.0),
-        Column(
-          children: [
-            FloatingActionButton.extended(
-              backgroundColor: const Color(0xff0277bd),
-              foregroundColor: Colors.white,
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => Cadastro()),
-                );
-              },
-              icon: Icon(Icons.pets),
-              label: Text('Cadastrar'),
-            ),
-             SizedBox(height: 15.0),
-          ],
-
-        )
-      ]
-      
-      ),
-      
+      ]),
     );
-   
-      
   }
 }
-  // @override
-  // Widget build(BuildContext context) {
-  //   return SliverList(
-  //       delegate: SliverChildListDelegate(<Widget>[
+  @override
+  Widget build(BuildContext context) {
+    return SliverList(
+        delegate: SliverChildListDelegate(<Widget>[
       // FutureBuilder<List<AnimalM>>(
       //   future: _animalController.buscarAnimais(),
       //   builder: (context, index) {
@@ -81,26 +58,30 @@ return SliverList(
       //     return null;
       //   },
       // ),
-      // SizedBox(height: 15.0),
-      //   Column(
-      //     children: [
-      //       FloatingActionButton.extended(
-      //         backgroundColor: const Color(0xff0277bd),
-      //         foregroundColor: Colors.white,
-      //         onPressed: () {
-      //           Navigator.push(
-      //             context,
-      //             MaterialPageRoute(builder: (context) => Cadastro()),
-      //           );
-      //         },
-      //         icon: Icon(Icons.pets),
-      //         label: Text('Cadastrar'),
-      //       ),
-      //        SizedBox(height: 15.0),
-      //     ],
-      //   ),
+      SizedBox(height: 15.0),
+        Column(
+          children: [
+            FloatingActionButton.extended(
+              backgroundColor: const Color(0xff0277bd),
+              foregroundColor: Colors.white,
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Cadastro()),
+                );
+              },
+              icon: Icon(Icons.pets),
+              label: Text('Cadastrar'),
+            ),
+             SizedBox(height: 15.0),
+          ],
+        ),
     
-    // Widget cardItem(AnimalM animal) {
+    ]));
+  }
+
+
+// Widget cardItem(AnimalM animal) {
 //   return Card(
 //       child: Column(
 //         //mainAxisSize: MainAxisSize.min, 
@@ -125,41 +106,21 @@ return SliverList(
   Widget cardItem() {
   return Card(
     child: Column(
-            children: <Widget>[
+      mainAxisSize: MainAxisSize.min,
+      children: <Widget>[
          ListTile(),
          Container(
       decoration:
           BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(20))),
-      width: 300,
-      height: 300,
+      width: 200,
+      height: 200,
       child: Image.asset("assets/put2.jpg"),
     ),
          Container(
       padding: EdgeInsets.all(10),
     //  child: Text(animal.nome),
         ),
-        Container(
-      decoration:
-          BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(20))),
-      width: 300,
-      height: 300,
-      child: Image.asset("assets/gato2.jpg"),
-    ),
-         Container(
-      padding: EdgeInsets.all(10),
-    //  child: Text(animal.nome),
-        ),
-        Container(
-      decoration:
-          BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(20))),
-      width: 300,
-      height: 300,
-      child: Image.asset("assets/15.jpg"),
-    ),
-         Container(
-      padding: EdgeInsets.all(10),
-    //  child: Text(animal.nome),
-        ),// ButtonTheme(
+        // ButtonTheme(
         //   child: ButtonBar(
         //     children: <Widget>[
         //       TextButton(
@@ -175,7 +136,6 @@ return SliverList(
        // ),
       ],
     ),
-    
   );
 }
   //return Text(animal.nome);

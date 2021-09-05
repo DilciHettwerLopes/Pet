@@ -79,6 +79,7 @@ flutter:
     - assets/bone.png
     - assets/banho.jpg
     - assets/dog.png
+    - assets/15.jpg
     - assets/capa.png
     - assets/fb-icon.png
     - assets/reset-password-icon.png
@@ -87,6 +88,7 @@ flutter:
     - assets/app-logo.png
     - assets/cao2.jpg
     - assets/cao3.jpg
+    - assets/put2.jpg
     - assets/gato1.jpg
     - assets/gato2.jpg
     - assets/post-picture-001.png
